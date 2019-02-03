@@ -42,10 +42,11 @@ public class MUsersRest extends MUsersFallback{
 	@HystrixCommand(fallbackMethod = "findListFallback")
     public ResponseBean<List<MUsers>> findList(@RequestBody MUsers obj) {
 		List<MUsers> list = service.findList(obj);
-		if(!list.isEmpty())
+		if(!list.isEmpty()) {
 			return new ResponseBean<List<MUsers>>(ResponseStatus.SUCCESS, list);
-		else
+		} else {
 			return new ResponseBean<List<MUsers>>(ResponseStatus.NO_DATA);
+		}
     }
 	
 	@ApiOperation(value="分页查询")
@@ -61,14 +62,16 @@ public class MUsersRest extends MUsersFallback{
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
     public ResponseBean<MUsers> findOne(@RequestBody MUsers obj) {
-    	if(StringUtils.isBlank(obj.getId()))
+    	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<MUsers>(ResponseStatus.PARAMS_ERROR);
+		}
 
     	MUsers obj_ = service.findOne(obj.getId());
-    	if(obj_ != null)
-    		return new ResponseBean<MUsers>(ResponseStatus.SUCCESS, obj_);
-    	else
-    		return new ResponseBean<MUsers>(ResponseStatus.NO_DATA);
+    	if(obj_ != null) {
+			return new ResponseBean<MUsers>(ResponseStatus.SUCCESS, obj_);
+		} else {
+			return new ResponseBean<MUsers>(ResponseStatus.NO_DATA);
+		}
     }
 
 	@ApiOperation(value="新增")
@@ -77,10 +80,11 @@ public class MUsersRest extends MUsersFallback{
 	@HystrixCommand(fallbackMethod = "insertFallback")
     public ResponseBean<MUsers> insert(@RequestBody MUsers obj) {
 		MUsers obj_ = service.insert(obj);
-		if(obj_ != null)
+		if(obj_ != null) {
 			return new ResponseBean<MUsers>(ResponseStatus.SUCCESS, obj_);
-		else
+		} else {
 			return new ResponseBean<MUsers>(ResponseStatus.FAIL);
+		}
     }
 	
 	@ApiOperation(value="更新")
@@ -88,14 +92,16 @@ public class MUsersRest extends MUsersFallback{
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")
     public ResponseBean<MUsers> update(@RequestBody MUsers obj) {
-    	if(StringUtils.isBlank(obj.getId()))
+    	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<MUsers>(ResponseStatus.PARAMS_ERROR);
+		}
     
     	MUsers obj_ = service.update(obj);
-    	if(obj_ != null)
+    	if(obj_ != null) {
 			return new ResponseBean<MUsers>(ResponseStatus.SUCCESS, obj_);
-		else
+		} else {
 			return new ResponseBean<MUsers>(ResponseStatus.FAIL);
+		}
     }
 	
 	@ApiOperation(value="删除")
@@ -103,13 +109,15 @@ public class MUsersRest extends MUsersFallback{
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "deleteFallback")
     public ResponseBean<MUsers> delete(@RequestBody MUsers obj) {
-    	if(StringUtils.isBlank(obj.getId()))
+    	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<MUsers>(ResponseStatus.PARAMS_ERROR);
+		}
     
-    	if(service.delete(obj.getId()) > 0)
-    		return new ResponseBean<MUsers>();
-    	else
-    		return new ResponseBean<MUsers>(ResponseStatus.NO_DATA);
+    	if(service.delete(obj.getId()) > 0) {
+			return new ResponseBean<MUsers>();
+		} else {
+			return new ResponseBean<MUsers>(ResponseStatus.NO_DATA);
+		}
     }
 
     @Autowired

@@ -49,20 +49,22 @@ public class MUsersService implements ITxTransaction{
 	@Transactional
 	public MUsers insert(MUsers obj){
 		obj.preInsert();
-		if(mapper.insert(obj) > 0)
-			return obj;
-		else
-			return null;
+		if(mapper.insert(obj) > 0) {
+            return obj;
+        } else {
+            return null;
+        }
 	}
 	
 	@Transactional
 	@CachePut(key = "#p0.id")
 	public MUsers update(MUsers obj){
 		obj.preUpdate();
-		if(mapper.update(obj) > 0)
-			return obj;
-		else
-			return null;
+		if(mapper.update(obj) > 0) {
+            return obj;
+        } else {
+            return null;
+        }
 	}
 	
 	@Transactional

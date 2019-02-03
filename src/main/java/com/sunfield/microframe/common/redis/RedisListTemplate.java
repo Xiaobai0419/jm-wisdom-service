@@ -102,8 +102,9 @@ public class RedisListTemplate{
     public boolean set(String key, List<Object> value, long time) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
-            if (time > 0)
+            if (time > 0) {
                 baseTemplate.expire(key, time);
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();

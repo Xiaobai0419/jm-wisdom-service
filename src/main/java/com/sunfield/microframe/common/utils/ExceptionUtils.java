@@ -17,8 +17,9 @@ public class ExceptionUtils {
 	 * @return
 	 */
 	public static String getException(Throwable e){
-		if(e == null)
-	        return null;
+		if(e == null) {
+            return null;
+        }
 		
 	    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    try{

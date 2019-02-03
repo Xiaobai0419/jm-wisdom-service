@@ -10,16 +10,8 @@ public class TestJavaConfigBean {
     private String testx;
     @Value("${testInt:60}")
     private int testInt;
-
-    @Value("${testx:x}")
-    public void setTestx(String testx) {
-        this.testx = testx;
-    }
-
-    @Value("${sunfield_dev:200}")
-    public void setSunfield_dev(String sunfield_dev) {
-        this.sunfield_dev = sunfield_dev;
-    }
+    @Value("${spring.datasource.url:680}")
+    private String ano;
 
     @Override
     public String toString() {
@@ -28,6 +20,18 @@ public class TestJavaConfigBean {
                 ", sunfield_dev='" + sunfield_dev + '\'' +
                 ", testx='" + testx + '\'' +
                 ", testInt=" + testInt +
+                ", ano='" + ano + '\'' +
                 '}';
     }
+
+    @Value("${ccx01:x}")
+    public void setTestx(String testx) {
+        this.testx = testx;
+    }
+
+    @Value("${testE:200}")
+    public void setSunfield_dev(String sunfield_dev) {
+        this.sunfield_dev = sunfield_dev;
+    }
+
 }

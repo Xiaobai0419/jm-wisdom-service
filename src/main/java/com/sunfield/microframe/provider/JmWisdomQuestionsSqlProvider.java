@@ -27,7 +27,7 @@ public class JmWisdomQuestionsSqlProvider{
  									" update_by AS updateBy,"+
  									" update_date AS updateDate,"+
  									" remarks AS remarks,"+
- 									" order AS order";
+ 									" select_order AS selectOrder";
  
  	public String generateFindListSql(JmWisdomQuestions obj){
 		return new SQL(){
@@ -36,8 +36,16 @@ public class JmWisdomQuestionsSqlProvider{
 				FROM("jm_wisdom_questions");
 				
 				WHERE("status = '0'");
-				
-				
+				//按行业分类列表，日期（按天）/赞数综合排序，可集成分页，独立操作
+				if(StringUtils.isNotBlank(obj.getIndustryId())){
+					WHERE("industry_id = #{industryId}");
+					ORDER_BY("date(create_date) desc,ayes desc");//使用函数会拖累性能，后期根据需要优化
+				}
+				//按精品排序列表，独立操作
+				if(obj.getSelectOrder() != null && obj.getSelectOrder() == 1){
+					WHERE("select_order is not null");
+					ORDER_BY("select_order");
+				}
 				
 			}
 		}.toString();
@@ -74,38 +82,45 @@ public class JmWisdomQuestionsSqlProvider{
 				VALUES("user_id", "#{userId}");
 				VALUES("content", "#{content}");
 				VALUES("oss_urls", "#{ossUrls}");
-				VALUES("ayes", "#{ayes}");
-				VALUES("antis", "#{antis}");
-				VALUES("answers", "#{answers}");
+				VALUES("ayes", "0");
+				VALUES("antis", "0");
+				VALUES("answers", "0");
 				VALUES("status", "0");
 				VALUES("create_by", "#{createBy}");
 				VALUES("create_date", "#{createDate}");
 				VALUES("update_by", "#{updateBy}");
 				VALUES("update_date", "#{updateDate}");
 				VALUES("remarks", "#{remarks}");
-				VALUES("order", "#{order}");
 			}
 		}.toString();
 	}
-	
+	//按业务条件拼接不同的sql
 	public String generateUpdateSql(JmWisdomQuestions obj){
 		return new SQL(){
 			{
 				UPDATE("jm_wisdom_questions");
-				
-				SET("title = #{title}");
-				SET("industry_id = #{industryId}");
-				SET("user_id = #{userId}");
-				SET("content = #{content}");
-				SET("oss_urls = #{ossUrls}");
-				SET("ayes = #{ayes}");
-				SET("antis = #{antis}");
-				SET("answers = #{answers}");
+				//赞+1，独立操作，赞时更新
+				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+					SET("ayes = ayes + 1");
+				}
+				//踩+1，独立操作，踩时更新
+				if(obj.getAntis() != null && obj.getAntis() == 1) {
+					SET("antis = antis + 1");
+				}
+				//回答数+1，独立操作，添加回答时更新
+				if(obj.getAnswers() != null && obj.getAnswers() == 1) {
+					SET("answers = answers + 1");
+				}
+
 				SET("update_by = #{updateBy}");
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");
-				SET("order = #{order}");
-				
+
+				//设置精品排序，独立操作，后台管理功能
+				if(obj.getSelectOrder() != null && obj.getSelectOrder() > 0) {
+					SET("select_order = #{selectOrder}");
+				}
+
 				WHERE("id = #{id}");
 			}
 		}.toString();

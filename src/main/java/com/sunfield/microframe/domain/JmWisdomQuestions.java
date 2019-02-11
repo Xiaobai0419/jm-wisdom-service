@@ -38,7 +38,7 @@ public class JmWisdomQuestions extends BaseDomain{
 	private Integer answers;
 	
 	@ApiModelProperty(value="精品排序，从1开始，空代表非精品问答", dataType="Integer")
-	private Integer order;
+	private Integer selectOrder;
 	
 	
 	public String getTitle() {
@@ -105,12 +105,17 @@ public class JmWisdomQuestions extends BaseDomain{
 		this.answers = answers;
 	}
 	
-	public Integer getOrder() {
-		return order;
+	public Integer getSelectOrder() {
+		return selectOrder;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setSelectOrder(Integer selectOrder) {
+		this.selectOrder = selectOrder;
 	}
-	
+
+	public static void main(String[] args) {
+		JmWisdomQuestions obj = new JmWisdomQuestions();
+		System.out.println(obj.industryId);
+		System.out.println(obj.getSelectOrder());
+	}
 }

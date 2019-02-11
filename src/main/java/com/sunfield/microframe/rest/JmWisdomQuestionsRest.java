@@ -32,7 +32,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 	@Autowired
 	private JmWisdomQuestionsService service;
 	
-	@ApiOperation(value="查询列表")
+	@ApiOperation(value="查询列表：精品查询，selectOrder字段传1，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -45,7 +45,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询")
+	@ApiOperation(value="分页查询：industryId字段传行业id，传递分页信息，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
@@ -53,7 +53,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
     	return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
-	@ApiOperation(value="根据主键查询")
+	@ApiOperation(value="根据主键查询：传递id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -69,7 +69,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="新增")
+	@ApiOperation(value="新增：传递content，industryId，userId，ossUrls，title，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "insertFallback")
@@ -82,7 +82,9 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="更新")
+	@ApiOperation(value="更新：业务1：用户点赞，传id，ayes字段传1，其他不传；业务2：用户踩，传id，antis字段传1，" +
+			"其他不传；业务3：用户新回答，传id，answers字段传1，其他不传；业务4：设置精品排序，后台管理功能，传id，" +
+			"selectOrder字段传需要设置的序号，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")
@@ -98,7 +100,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="删除")
+	@ApiOperation(value="删除：传递id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "deleteFallback")

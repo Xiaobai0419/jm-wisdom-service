@@ -2,6 +2,8 @@ package com.sunfield.microframe.service;
 
 import java.util.List;
 
+import com.sunfield.microframe.domain.JmAppUser;
+import com.sunfield.microframe.feign.JmAppUserFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +24,15 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 
 	@Autowired
 	private JmWisdomQuestionsMapper mapper;
+	@Autowired
+	private JmAppUserFeignService jmAppUserFeignService;
+
+	private JmAppUser findUser(String userId) {
+		return jmAppUserFeignService.findOne(userId).getData();
+	}//userId为null会造成Feign服务调用失败
 	
 	public List<JmWisdomQuestions> findList(JmWisdomQuestions obj){
+		//目前前台列表不需要用户相关信息，只有详情页需要，需要时添加用户信息获取代码即可
 		return mapper.findList(obj);
 	}
 	
@@ -31,6 +40,15 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 		List<JmWisdomQuestions> totalList = mapper.findList(obj);
 		if(!totalList.isEmpty()){
 			List<JmWisdomQuestions> pageList = mapper.findPage(obj);
+			if(pageList != null && pageList.size() > 0) {
+				for(JmWisdomQuestions jmWisdomQuestions : pageList) {
+					if(jmWisdomQuestions != null && jmWisdomQuestions.getUserId() != null) {//userId为null会造成Feign服务调用失败
+						//远程调用用户服务，获取业务所需用户具体信息，目前用于后台管理列表功能
+						JmAppUser user = findUser(jmWisdomQuestions.getUserId());//注意不要写成obj,改善参数命名方式以区分！
+						jmWisdomQuestions.setUser(user);
+					}
+				}
+			}
 			return new Page<JmWisdomQuestions>(totalList.size(), obj.getPageSize(), obj.getPageNumber(), pageList);
 		}else{
 			return new Page<JmWisdomQuestions>();
@@ -38,7 +56,13 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 	}
 	
 	public JmWisdomQuestions findOne(String id){
-		return mapper.findOne(id);
+		JmWisdomQuestions jmWisdomQuestions = mapper.findOne(id);
+		if(jmWisdomQuestions != null && jmWisdomQuestions.getUserId() != null) {
+			//远程调用用户服务，获取业务所需用户具体信息
+			JmAppUser user = findUser(jmWisdomQuestions.getUserId());
+			jmWisdomQuestions.setUser(user);
+		}
+		return jmWisdomQuestions;
 	}
 	
 	@Transactional

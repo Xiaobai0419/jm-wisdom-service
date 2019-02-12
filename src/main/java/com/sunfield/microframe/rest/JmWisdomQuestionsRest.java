@@ -2,6 +2,7 @@ package com.sunfield.microframe.rest;
 
 import java.util.List;
 
+import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,15 +25,18 @@ import com.sunfield.microframe.service.JmWisdomQuestionsService;
 /**
  * jm_wisdom_questions rest
  * @author sunfield coder
+ * 所有业务代码写在Service层，Controller层只保留对业务的调用
  */
+@Api(tags = "角马问答相关接口")
 @RestController
 @RequestMapping(value = "/JmWisdomQuestions")
 public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 	
 	@Autowired
 	private JmWisdomQuestionsService service;
-	
-	@ApiOperation(value="查询列表：精品查询，selectOrder字段传1，其他不传")
+
+	@ApiOperation(value="查询列表：业务1：精品查询，selectOrder字段传1，其他不传；" +
+			"业务2：前台按行业显示，industryId字段传行业id，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -45,12 +49,13 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询：industryId字段传行业id，传递分页信息，其他不传")
+	@ApiOperation(value="分页查询：后台功能，全行业分页列表显示，传递分页信息，其他不传；" +
+			"如果前台列表业务也需要分页，也可传递对应字段调用该分页服务")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
     public ResponseBean<Page<JmWisdomQuestions>> findPage(@RequestBody JmWisdomQuestions obj) {
-    	return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
+		return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
 	@ApiOperation(value="根据主键查询：传递id,其他不传")
@@ -61,9 +66,9 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomQuestions>(ResponseStatus.PARAMS_ERROR);
     	}
-    	JmWisdomQuestions object = service.findOne(obj.getId());
-    	if(object != null) {
-    		return new ResponseBean<JmWisdomQuestions>(ResponseStatus.SUCCESS, object);
+    	JmWisdomQuestions jmWisdomQuestions = service.findOne(obj.getId());
+    	if(jmWisdomQuestions != null) {
+    		return new ResponseBean<JmWisdomQuestions>(ResponseStatus.SUCCESS, jmWisdomQuestions);
     	} else {
     		return new ResponseBean<JmWisdomQuestions>(ResponseStatus.NO_DATA);
 		}

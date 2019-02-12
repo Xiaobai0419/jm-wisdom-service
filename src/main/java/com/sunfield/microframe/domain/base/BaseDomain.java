@@ -1,16 +1,17 @@
 package com.sunfield.microframe.domain.base;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sunfield.microframe.common.utils.DateUtils;
 import com.sunfield.microframe.common.utils.UUID;
-
 import io.swagger.annotations.ApiModelProperty;
 
-public class BaseDomain{
-	
+import java.util.Date;
+
+public class BaseDomain {
+
+	public final static String NORMAL_STATUS = "0";
+
 	@ApiModelProperty(value="主键", dataType="String")
 	private String id;
 

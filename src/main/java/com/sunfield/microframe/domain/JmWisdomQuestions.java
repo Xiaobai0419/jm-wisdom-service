@@ -39,8 +39,27 @@ public class JmWisdomQuestions extends BaseDomain{
 	
 	@ApiModelProperty(value="精品排序，从1开始，空代表非精品问答", dataType="Integer")
 	private Integer selectOrder;
-	
-	
+
+	private JmAppUser user;
+
+	private JmIndustries industry;
+
+	public JmAppUser getUser() {
+		return user;
+	}
+
+	public void setUser(JmAppUser user) {
+		this.user = user;
+	}
+
+	public JmIndustries getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(JmIndustries industry) {
+		this.industry = industry;
+	}
+
 	public String getTitle() {
 		return title;
 	}

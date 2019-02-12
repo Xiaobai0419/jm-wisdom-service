@@ -7,48 +7,48 @@ package com.sunfield.microframe.common.response;
  */
 public class ResponseBean<T> {
 
-	private ResponseStatus status;
+	private String status;
 	
 	private String msg;
 	
 	private T data;
 	
 	public ResponseBean(){
-		this.status = ResponseStatus.SUCCESS;
-		this.msg = ResponseStatus.getMsg(this.status);
+		this.status = ResponseStatus.getStatus(ResponseStatus.SUCCESS);
+		this.msg = ResponseStatus.getMsg(ResponseStatus.SUCCESS);
 	}
 	
 	public ResponseBean(ResponseStatus status){
-		this.status = status;
+		this.status = ResponseStatus.getStatus(status);
 		this.msg = ResponseStatus.getMsg(status);
 	}
 	
 	public ResponseBean(ResponseStatus status, T data) {
-		this.status = status;
+		this.status = ResponseStatus.getStatus(status);
 		this.msg = ResponseStatus.getMsg(status);
 		this.data = data;
 	}
 
 	public ResponseBean(ResponseStatus status, String msg){
-		this.status = status;
+		this.status = ResponseStatus.getStatus(status);
 		this.msg = msg;
 	}
 	
 	public ResponseBean(ResponseStatus status, String msg, T data) {
-		this.status = status;
+		this.status = ResponseStatus.getStatus(status);
 		this.msg = msg;
 		this.data = data;
 	}
 	
 	public Boolean hasError(){
-		return !ResponseStatus.SUCCESS.equals(this.getStatus());
+		return "SUCCESS".equals(this.getStatus());
 	}
 	
-	public ResponseStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(ResponseStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

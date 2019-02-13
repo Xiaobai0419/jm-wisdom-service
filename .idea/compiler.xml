@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sunfield-microframe-service" />
+        <module name="jm-wisdom-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sunfield-microframe-service" target="1.8" />
+      <module name="jm-wisdom-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

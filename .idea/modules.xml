@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sunfield-microframe-service.iml" filepath="$PROJECT_DIR$/sunfield-microframe-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jm-wisdom-service.iml" filepath="$PROJECT_DIR$/jm-wisdom-service.iml" />
     </modules>
   </component>
 </project>

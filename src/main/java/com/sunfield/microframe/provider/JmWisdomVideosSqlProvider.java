@@ -34,9 +34,12 @@ public class JmWisdomVideosSqlProvider{
 				FROM("jm_wisdom_videos");
 				
 				WHERE("status = '0'");
-				
-				
-				
+
+				//查询某访谈关联视频列表，时间倒序，必须传递关联访谈ID，非空判断只是为了代码安全
+				if(StringUtils.isNotBlank(obj.getInterviewId())){
+					WHERE("interview_id = #{interviewId}");
+				}
+				ORDER_BY("create_date desc");
 			}
 		}.toString();
 	}
@@ -71,8 +74,12 @@ public class JmWisdomVideosSqlProvider{
 				VALUES("interview_id", "#{interviewId}");
 				VALUES("cover_url", "#{coverUrl}");
 				VALUES("video_url", "#{videoUrl}");
+				//后台管理功能，数据库字段非空，必须传递的参数，值必须为1或2
 				VALUES("allow_comments", "#{allowComments}");
+				VALUES("ayes", "0");
+				//后台管理功能，数据库字段非空，必须传递的参数，值必须为1或2
 				VALUES("leaguer_only", "#{leaguerOnly}");
+				//后台管理功能，会员专属时才有值，可为空，空代表不限制，数值代表免费时长
 				VALUES("free_duration", "#{freeDuration}");
 				VALUES("status", "0");
 				VALUES("create_by", "#{createBy}");
@@ -93,8 +100,15 @@ public class JmWisdomVideosSqlProvider{
 				SET("interview_id = #{interviewId}");
 				SET("cover_url = #{coverUrl}");
 				SET("video_url = #{videoUrl}");
+				//后台管理功能，数据库字段非空，必须传递的参数，值必须为1或2
 				SET("allow_comments = #{allowComments}");
+				//前台功能，访谈允许评论点赞情形下（前台用户可看到点赞按钮并点赞，说明一定是配置了可评论点赞，记录赞数是一定没错的），赞数+1，独立操作，用户点赞该视频时更新
+				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+					SET("favorites = favorites + 1");
+				}
+				//后台管理功能，数据库字段非空，必须传递的参数，值必须为1或2
 				SET("leaguer_only = #{leaguerOnly}");
+				//后台管理功能，会员专属时才有值，可为空，空代表不限制，数值代表免费时长
 				SET("free_duration = #{freeDuration}");
 				SET("update_by = #{updateBy}");
 				SET("update_date = #{updateDate}");

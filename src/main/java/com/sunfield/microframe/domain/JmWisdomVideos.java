@@ -27,11 +27,14 @@ public class JmWisdomVideos extends BaseDomain{
 	
 	@ApiModelProperty(value="是否允许评论和点赞，1允许，2不允许", dataType="Integer")
 	private Integer allowComments;
-	
+
+	@ApiModelProperty(value="赞数,缓存，允许评论和点赞时记录值", dataType="Integer")
+	private Integer ayes;
+
 	@ApiModelProperty(value="是否会员专属，1是，2否", dataType="Integer")
 	private Integer leaguerOnly;
 	
-	@ApiModelProperty(value="免费时长，单位秒", dataType="Integer")
+	@ApiModelProperty(value="免费时长，会员专属时才有值，可为空，空代表不限制，数值代表免费时长，单位秒", dataType="Integer")
 	private Integer freeDuration;
 	
 	
@@ -74,7 +77,15 @@ public class JmWisdomVideos extends BaseDomain{
 	public void setAllowComments(Integer allowComments) {
 		this.allowComments = allowComments;
 	}
-	
+
+	public Integer getAyes() {
+		return ayes;
+	}
+
+	public void setAyes(Integer ayes) {
+		this.ayes = ayes;
+	}
+
 	public Integer getLeaguerOnly() {
 		return leaguerOnly;
 	}

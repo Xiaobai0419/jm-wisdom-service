@@ -33,8 +33,21 @@ public class JmWisdomInterviewsSqlProvider{
 				FROM("jm_wisdom_interviews");
 				
 				WHERE("status = '0'");
-				
-				
+
+				//按推荐排序列表，独立操作
+				if(obj.getSelectOrder() != null && obj.getSelectOrder() == 1){
+					WHERE("select_order is not null");
+					ORDER_BY("select_order");
+				}
+				//按视频板块推荐排序列表，独立操作
+				else if(obj.getVideoSelectOrder() != null && obj.getVideoSelectOrder() == 1){
+					WHERE("video_select_order is not null");
+					ORDER_BY("video_select_order");
+				}
+				//按时间倒序，独立操作
+				else {
+					ORDER_BY("create_date desc");
+				}
 				
 			}
 		}.toString();
@@ -69,9 +82,10 @@ public class JmWisdomInterviewsSqlProvider{
 				VALUES("title", "#{title}");
 				VALUES("content", "#{content}");
 				VALUES("cover_url", "#{coverUrl}");
+				//后台管理功能，支持插入时设置两种排序号，传空或不传代表不参与排序
 				VALUES("select_order", "#{selectOrder}");
 				VALUES("video_select_order", "#{videoSelectOrder}");
-				VALUES("favorites", "#{favorites}");
+				VALUES("favorites", "0");
 				VALUES("status", "0");
 				VALUES("create_by", "#{createBy}");
 				VALUES("create_date", "#{createDate}");
@@ -90,13 +104,18 @@ public class JmWisdomInterviewsSqlProvider{
 				SET("title = #{title}");
 				SET("content = #{content}");
 				SET("cover_url = #{coverUrl}");
+				//后台管理功能，支持编辑时设置两种排序号，传空或不传代表不参与排序
 				SET("select_order = #{selectOrder}");
 				SET("video_select_order = #{videoSelectOrder}");
-				SET("favorites = #{favorites}");
+				//前台功能，收藏人数+1，独立操作，用户收藏该访谈时更新
+				if(obj.getFavorites() != null && obj.getFavorites() == 1) {//缺少非空判断时，不传该字段会报错
+					SET("favorites = favorites + 1");
+				}
+
 				SET("update_by = #{updateBy}");
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");
-				
+
 				WHERE("id = #{id}");
 			}
 		}.toString();

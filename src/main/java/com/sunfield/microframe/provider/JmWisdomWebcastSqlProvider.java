@@ -30,11 +30,12 @@ public class JmWisdomWebcastSqlProvider{
 			{
 				SELECT(COLUMNS);
 				FROM("jm_wisdom_webcast");
+
+				//业务特殊需求：查询所有启用、禁用直播，禁用标识为2，1为删除标识
+				WHERE("status != '1'");
 				
-				WHERE("status = '0'");
-				
-				
-				
+				//仅用于后台直播管理，启用/禁用第一排序，直播开始时间倒序第二排序，创建时间倒序第三排序
+				ORDER_BY("status,begin_time desc,create_date desc");
 			}
 		}.toString();
 	}
@@ -49,14 +50,20 @@ public class JmWisdomWebcastSqlProvider{
 	}
  
  	public String generateFindOneSql(String id){
-		return new SQL(){
+		//业务特殊需求：前台显示唯一启用的、正在播放的直播，按直播开始时间倒序取第一个，查询条件是启用状态的，开始、结束时间与当前时间比较，当前时间在两者之间，包括头尾，有符合条件的唯一一条返回结果，则显示，没有则不显示。新增直播时，与当前正播放直播时间冲突者必须设置为禁用
+		String sql = new SQL(){
 			{
 				SELECT(COLUMNS);
 				FROM("jm_wisdom_webcast");
-				
-				WHERE("id = #{id}");
+
+				WHERE("status = '0'");
+				WHERE("begin_time <= now()");
+				WHERE("end_time >= now()");
+				ORDER_BY("begin_time desc");
 			}
 		}.toString();
+		sql += " LIMIT 0,1 ";
+		return sql;
 	}
 	
 	public String generateInsertSql(JmWisdomWebcast obj){

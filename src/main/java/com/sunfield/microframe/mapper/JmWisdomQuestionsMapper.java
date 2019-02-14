@@ -18,7 +18,7 @@ import com.sunfield.microframe.provider.JmWisdomQuestionsSqlProvider;
 public interface JmWisdomQuestionsMapper{
 
 	/**
-	 * �б��ѯ
+	 * 列表查询
 	 * @param obj
 	 * @return
 	 */
@@ -26,7 +26,7 @@ public interface JmWisdomQuestionsMapper{
 	public List<JmWisdomQuestions> findList(JmWisdomQuestions obj);
 
 	/**
-	 * ��ҳ��ѯ
+	 * 分页查询
 	 * @param obj
 	 * @return
 	 */
@@ -34,7 +34,7 @@ public interface JmWisdomQuestionsMapper{
 	public List<JmWisdomQuestions> findPage(JmWisdomQuestions obj);
 
 	/**
-	 * ���в�ѯ
+	 * 单行查询
 	 * @param id
 	 * @return
 	 */
@@ -42,7 +42,7 @@ public interface JmWisdomQuestionsMapper{
 	public JmWisdomQuestions findOne(String id);
 
 	/**
-	 * ���뵥��
+	 * 插入单行
 	 * @param obj
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public interface JmWisdomQuestionsMapper{
 	public int insert(JmWisdomQuestions obj);
 
 	/**
-	 * ���µ���
+	 * 更新单行
 	 * @param obj
 	 * @return
 	 */
@@ -58,7 +58,7 @@ public interface JmWisdomQuestionsMapper{
 	public int update(JmWisdomQuestions obj);
 
 	/**
-	 * ɾ�����У�һ��Ϊ�߼�ɾ����
+	 * 删除单行（一般为逻辑删除）
 	 * @param id
 	 * @return
 	 */

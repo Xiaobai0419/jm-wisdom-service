@@ -13,16 +13,16 @@ import com.sunfield.microframe.domain.base.BaseDomain;
 @ApiModel(value="JmWisdomUserQuestions", description="")
 public class JmWisdomUserQuestions extends BaseDomain{
 
-	@ApiModelProperty(value="问答类型，1代表问题，2代表回答，类型不单设表", dataType="Integer")
+	@ApiModelProperty(value="问答类型，1代表问题，2代表回答，3代表访谈，4代表访谈视频，类型不单设表", dataType="Integer")
 	private Integer type;
 	
-	@ApiModelProperty(value="赞/踩用户id，关联用户表id", dataType="String")
+	@ApiModelProperty(value="赞/踩/访谈收藏/访谈视频点赞用户id，关联用户表id", dataType="String")
 	private String userId;
 	
-	@ApiModelProperty(value="问题/回答ID，依类型不同，关联问题表或问题回答表ID", dataType="String")
+	@ApiModelProperty(value="问题/回答/访谈/访谈视频ID，依类型不同，关联问题表或问题回答表或访谈表或访谈视频表ID", dataType="String")
 	private String questionId;
 	
-	@ApiModelProperty(value="赞/踩，默认0不赞不踩，赞为1，踩为2", dataType="Integer")
+	@ApiModelProperty(value="赞/踩/收藏，默认0不赞不踩，赞/收藏为1，踩为2，不收藏或视频取消点赞，则不记录或逻辑删除", dataType="Integer")
 	private Integer yesorno;
 	
 	

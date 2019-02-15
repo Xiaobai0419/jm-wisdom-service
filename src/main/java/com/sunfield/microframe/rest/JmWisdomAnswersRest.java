@@ -2,6 +2,7 @@ package com.sunfield.microframe.rest;
 
 import java.util.List;
 
+import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import com.sunfield.microframe.service.JmWisdomAnswersService;
  * jm_wisdom_answers rest
  * @author sunfield coder
  */
+@Api(tags = "角马问答-角马问题回答接口")
 @RestController
 @RequestMapping(value = "/JmWisdomAnswers")
 public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
@@ -32,7 +34,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@Autowired
 	private JmWisdomAnswersService service;
 	
-	@ApiOperation(value="查询列表")
+	@ApiOperation(value="查询列表：前台功能，传questionId，问题对应回答列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -45,15 +47,15 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询")
+	@ApiOperation(value="分页查询：后台管理，传递分页参数，角马问答板块所有评论列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
     public ResponseBean<Page<JmWisdomAnswers>> findPage(@RequestBody JmWisdomAnswers obj) {
     	return new ResponseBean<Page<JmWisdomAnswers>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
-	
-	@ApiOperation(value="根据主键查询")
+
+	@ApiOperation(value="根据主键查询：传id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -69,7 +71,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="新增")
+	@ApiOperation(value="新增：传递content，questionId，userId，title，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "insertFallback")
@@ -82,7 +84,8 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="更新")
+	@ApiOperation(value="更新：业务1，前台用户点赞回答，传id,ayes字段传1，其他不传；" +
+			"业务2，前台用户踩回答，传id,antis字段传1，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")
@@ -98,7 +101,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="删除")
+	@ApiOperation(value="删除：后台管理，传id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "deleteFallback")

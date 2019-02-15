@@ -38,8 +38,16 @@ public interface JmWisdomUserQuestionsMapper{
 	 * @param id
 	 * @return
 	 */
-	@SelectProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateFindOneSql")
-	public JmWisdomUserQuestions findOne(String id);
+//	@SelectProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateFindOneSql")
+//	public JmWisdomUserQuestions findOne(String id);
+
+	/**
+	 * 用户获取自身对各类目标对象的赞、踩情况
+	 * @param obj
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateFindSelfSql")
+	public JmWisdomUserQuestions findOne(JmWisdomUserQuestions obj);
 
 	/**
 	 * 插入单行
@@ -62,7 +70,14 @@ public interface JmWisdomUserQuestionsMapper{
 	 * @param id
 	 * @return
 	 */
-	@UpdateProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateDeleteSql")
-	public int delete(String id);
-	
+//	@UpdateProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateDeleteSql")
+//	public int delete(String id);
+
+	/**
+	 * 用户取消踩/赞/收藏时，进行逻辑删除
+	 * @param obj
+	 * @return
+	 */
+	@UpdateProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateDeleteSelfSql")
+	public int delete(JmWisdomUserQuestions obj);
 }

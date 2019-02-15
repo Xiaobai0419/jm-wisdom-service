@@ -42,6 +42,14 @@ public interface JmWisdomWebcastMapper{
 	public JmWisdomWebcast findOne(String id);
 
 	/**
+	 * 当前直播查询
+	 * @param
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomWebcastSqlProvider.class, method="generateFindCurrentSql")
+	public JmWisdomWebcast findCurrent();
+
+	/**
 	 * 插入单行
 	 * @param obj
 	 * @return

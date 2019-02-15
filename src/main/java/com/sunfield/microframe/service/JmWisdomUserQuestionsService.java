@@ -37,8 +37,13 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 		}
 	}
 	
-	public JmWisdomUserQuestions findOne(String id){
-		return mapper.findOne(id);
+//	public JmWisdomUserQuestions findOne(String id){
+//		return mapper.findOne(id);
+//	}
+
+	//用户获取自身对各类目标对象的赞、踩情况
+	public JmWisdomUserQuestions findOne(JmWisdomUserQuestions obj){
+		return mapper.findOne(obj);
 	}
 	
 	@Transactional
@@ -61,9 +66,14 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 		}
 	}
 	
+//	@Transactional
+//	public int delete(String id){
+//		return mapper.delete(id);
+//	}
+
+	//用户取消踩/赞/收藏时，进行逻辑删除
 	@Transactional
-	public int delete(String id){
-		return mapper.delete(id);
+	public int delete(JmWisdomUserQuestions obj){
+		return mapper.delete(obj);
 	}
-	
 }

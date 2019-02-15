@@ -30,8 +30,17 @@ public class JmWisdomAnswers extends BaseDomain{
 	
 	@ApiModelProperty(value="踩数,缓存", dataType="Integer")
 	private Integer antis;
-	
-	
+
+	private JmAppUser user;
+
+	public JmAppUser getUser() {
+		return user;
+	}
+
+	public void setUser(JmAppUser user) {
+		this.user = user;
+	}
+
 	public String getTitle() {
 		return title;
 	}

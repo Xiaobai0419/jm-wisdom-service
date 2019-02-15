@@ -2,6 +2,7 @@ package com.sunfield.microframe.rest;
 
 import java.util.List;
 
+import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import com.sunfield.microframe.service.JmWisdomVideosService;
  * jm_wisdom_videos rest
  * @author sunfield coder
  */
+@Api(tags = "角马问答-访谈视频接口")
 @RestController
 @RequestMapping(value = "/JmWisdomVideos")
 public class JmWisdomVideosRest extends JmWisdomVideosFallback{
@@ -32,7 +34,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 	@Autowired
 	private JmWisdomVideosService service;
 	
-	@ApiOperation(value="查询列表")
+	@ApiOperation(value="查询列表：访谈对应视频列表，传递interviewId，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -45,7 +47,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询")
+	@ApiOperation(value="分页查询：后台功能，访谈对应视频列表，传递interviewId，分页信息")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
@@ -53,7 +55,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
     	return new ResponseBean<Page<JmWisdomVideos>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
-	@ApiOperation(value="根据主键查询")
+	@ApiOperation(value="根据主键查询：传id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -69,7 +71,9 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="新增")
+	@ApiOperation(value="新增：后台功能，传title，interviewId，coverUrl，videoUrl，" +
+			"allowComments（1 允许评论 2不允许评论），leaguerOnly（1 会员专属 2 非会员专属），" +
+			"freeDuration（会员专属时才有值，可为空，空代表不限制，数值代表免费时长）")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "insertFallback")
@@ -82,7 +86,10 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="更新")
+	@ApiOperation(value="更新：业务1：前台用户点赞（视频允许评论点赞时），传id，ayes传1，其他不传" +
+			"业务2：后台功能，传id，title，coverUrl，videoUrl，" +
+			"allowComments（1 允许评论 2不允许评论），leaguerOnly（1 会员专属 2 非会员专属），" +
+			"freeDuration（会员专属时才有值，可为空，空代表不限制，数值代表免费时长）")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")
@@ -98,7 +105,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="删除")
+	@ApiOperation(value="删除：传递id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "deleteFallback")

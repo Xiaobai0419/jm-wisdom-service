@@ -5,18 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ee584b4-248c-4001-8f9f-fd8e9950f06f" name="Default Changelist" comment="修改配置文件编码方式为UTF-8;新增访谈相关生成代码">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commons/commons.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/utils/DateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/utils/DateUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/response/ResponseBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/response/ResponseBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/utils/ExceptionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/utils/ExceptionUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/common/utils/SmsUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/domain/JmAppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/classes/com/sunfield/microframe/domain/JmAppUser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/target/commons-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/commons-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commons/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../commons/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../commons/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomVideos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomVideos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomAnswers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomAnswers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomWebcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomWebcast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomWebcastFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomWebcastFallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomWebcastMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomWebcastMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomAnswersSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomAnswersSqlProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomUserQuestionsSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomUserQuestionsSqlProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomWebcastSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomWebcastSqlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomAnswersRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomAnswersRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomUserQuestionsRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomUserQuestionsRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomAnswersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomAnswersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomUserQuestionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomUserQuestionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomWebcastService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomWebcastService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/../commons/target/" />
@@ -77,46 +99,46 @@
     <session id="-170879386">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.43" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="52" />
-          <entry key="java" value="165" />
-          <entry key="properties" value="16" />
-          <entry key="xml" value="6" />
+          <entry key="class" value="61" />
+          <entry key="java" value="334" />
+          <entry key="properties" value="18" />
+          <entry key="xml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="52" />
-          <entry key="JAVA" value="165" />
-          <entry key="Properties" value="16" />
-          <entry key="XML" value="6" />
+          <entry key="CLASS" value="61" />
+          <entry key="JAVA" value="334" />
+          <entry key="Properties" value="18" />
+          <entry key="XML" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2171" />
+          <entry key="java" value="4594" />
           <entry key="properties" value="6" />
-          <entry key="txt" value="403" />
+          <entry key="txt" value="437" />
           <entry key="xml" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2171" />
-          <entry key="PLAIN_TEXT" value="403" />
+          <entry key="JAVA" value="4594" />
+          <entry key="PLAIN_TEXT" value="437" />
           <entry key="Properties" value="6" />
           <entry key="XML" value="21" />
         </counts>
@@ -129,59 +151,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
+            <state relative-caret-position="220">
+              <caret line="101" column="58" selection-start-line="101" selection-start-column="58" selection-end-line="101" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomInterviewsService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomWebcastSqlProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-              <folding>
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#768#769#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="378">
+              <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomInterviewsMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomWebcastService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="572">
+              <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="101" selection-start-line="101" selection-end-line="104" selection-end-column="17" />
+            <state relative-caret-position="-154">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomWebcastFallback.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="820">
-              <caret line="112" column="17" lean-forward="true" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+            <state relative-caret-position="317">
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/SwaggerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="103" column="28" lean-forward="true" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
+            <state relative-caret-position="434">
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomWebcast.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="31" selection-start-line="31" selection-end-line="31" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="99" column="42" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomVideosMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -200,9 +254,15 @@
       <find>findListFallback</find>
       <find>_obj</find>
       <find>object</find>
+      <find>generateFindSelfSql</find>
+      <find>generateInsertSql</find>
+      <find>generateDeleteSelfSql</find>
+      <find>ResponseStatus</find>
     </findStrings>
     <replaceStrings>
       <replace>object</replace>
+      <replace>WebcastResponseBean</replace>
+      <replace>WebcastResponseStatus</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -238,15 +298,33 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/JmIndustriesFeignService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/fallback/JmAppUserFeignServiceFallback.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomAnswersMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomVideos.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomWebcastMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomWebcastService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomAnswers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomAnswersSqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomAnswersService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomUserQuestionsSqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomUserQuestionsRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomUserQuestionsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomAnswersRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomWebcast.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomWebcastSqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomWebcastFallback.java" />
       </list>
     </option>
   </component>
@@ -279,6 +357,15 @@
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="commons" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="commons" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="jm-wisdom-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
@@ -291,10 +378,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="100" />
-    <option name="y" value="20" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
-    <option name="height" value="820" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -304,6 +391,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -345,6 +434,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="microframe" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jm-wisdom-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jm-wisdom-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="response" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
@@ -438,8 +547,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -453,8 +560,8 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550135718126" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jm-industry-service" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550232793763" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jm-user-service" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -598,7 +705,8 @@
       <workItem from="1549946316413" duration="15161000" />
       <workItem from="1550017851614" duration="23188000" />
       <workItem from="1550108215651" duration="6739000" />
-      <workItem from="1550131363313" duration="4313000" />
+      <workItem from="1550131363313" duration="7629000" />
+      <workItem from="1550191328428" duration="36652000" />
     </task>
     <task id="LOCAL-00001" summary="集成Apollo配置中心.">
       <created>1548999996597</created>
@@ -684,11 +792,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550126085847</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="添加访谈、访谈视频相关前后台功能增删改查逻辑.">
+      <created>1550135911640</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1550135911640</updated>
+    </task>
+    <task id="LOCAL-00014" summary="修改部分直播业务逻辑.">
+      <created>1550138886440</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1550138886440</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135166000" />
+    <option name="totallyTimeSpent" value="175134000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -701,9 +823,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.34861407" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.3523454" />
       <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.3219616" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -713,7 +834,7 @@
       <window_info id="Web" order="7" sideWeight="0.50080776" side_tool="true" weight="0.3219616" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.37554586" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.37486458" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -723,8 +844,8 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.20585048" />
+      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.20585048" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.44203684" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -826,7 +947,9 @@
     <MESSAGE value="完成行业服务Feign调用；修改Feign客户端添加降级类，去掉url强制指定实例；添加feign、ribbon、hystrix配置；添加eureka注册实例配置以ip注册." />
     <MESSAGE value="调整为引用公共maven包形式的sdk,行业Bean转移到公共sdk,删除冗余包、类，测试通过." />
     <MESSAGE value="修改配置文件编码方式为UTF-8;新增访谈相关生成代码;手动修复了此前生成代码中的中文乱码." />
-    <option name="LAST_COMMIT_MESSAGE" value="修改配置文件编码方式为UTF-8;新增访谈相关生成代码;手动修复了此前生成代码中的中文乱码." />
+    <MESSAGE value="添加访谈、访谈视频相关前后台功能增删改查逻辑." />
+    <MESSAGE value="修改部分直播业务逻辑." />
+    <option name="LAST_COMMIT_MESSAGE" value="修改部分直播业务逻辑." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,252 +970,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-schema/2.2.2/springfox-schema-2.2.2.jar!/springfox/documentation/schema/property/OptimizedModelPropertiesProvider.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="220" selection-start-line="220" selection-end-line="220" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/netflix/hystrix/hystrix-javanica/1.5.12/hystrix-javanica-1.5.12.jar!/com/netflix/hystrix/contrib/javanica/command/MethodExecutionAction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/DualStackPlainSocketImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="282" column="22" selection-start-line="282" selection-start-column="22" selection-end-line="282" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.14.RELEASE/spring-aop-4.3.14.RELEASE.jar!/org/springframework/aop/aspectj/AspectJAroundAdvice.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.14.RELEASE/spring-aop-4.3.14.RELEASE.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmAppUser.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.14.RELEASE/spring-tx-4.3.14.RELEASE.jar!/org/springframework/transaction/annotation/Transactional.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../jm-industry-service/src/main/java/com/sunfield/microframe/rest/MUsersRest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmAppUserRest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/Page.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/aop/RestAop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="39" column="68" selection-start-line="39" selection-start-column="68" selection-end-line="39" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/ResponseStatus.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.14.RELEASE/spring-context-4.3.14.RELEASE.jar!/org/springframework/stereotype/Service.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/ResponseBean.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.14.RELEASE/spring-beans-4.3.14.RELEASE.jar!/org/springframework/beans/factory/annotation/Autowired.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-core/1.4.4.RELEASE/spring-cloud-netflix-core-1.4.4.RELEASE.jar!/org/springframework/cloud/netflix/feign/FeignClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/fallback/JmIndustriesFeignServiceFallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/JmIndustriesFeignService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/JmAppUserFeignService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.14.RELEASE/spring-aop-4.3.14.RELEASE.jar!/org/springframework/aop/interceptor/ExposeInvocationInterceptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.14.RELEASE/spring-core-4.3.14.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2002">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.14.RELEASE/spring-aop-4.3.14.RELEASE.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7172">
-          <caret line="382" lean-forward="true" selection-start-line="382" selection-end-line="382" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/feign/fallback/JmAppUserFeignServiceFallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/JmAppUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="114" column="23" selection-start-line="114" selection-start-column="23" selection-end-line="114" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomAnswersSqlProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1740">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomAnswersRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1232">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomAnswersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomAnswersFallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomAnswers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomInterviewsFallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomVideosMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomWebcastMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomAnswersMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/app.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1100,31 +977,219 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="290">
+          <caret line="929" column="19" selection-start-line="929" selection-start-column="19" selection-end-line="929" selection-end-column="19" />
+          <folding>
+            <element signature="e#39232#39233#0" expanded="true" />
+            <element signature="e#39292#39293#0" expanded="true" />
+            <element signature="e#39988#39989#0" expanded="true" />
+            <element signature="e#40069#40070#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1175#1176#0" expanded="true" />
+            <element signature="e#1205#1206#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1269#1270#0" expanded="true" />
+            <element signature="e#1299#1300#0" expanded="true" />
+            <element signature="e#1325#1326#0" expanded="true" />
+            <element signature="e#1352#1353#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1419#1420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/annotations/SelectProvider.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/jdbc/AbstractSQL.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/jdbc/SQL.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomWebcastMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/WebcastResponseStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomInterviewsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomAnswersMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="49" column="43" lean-forward="true" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomInterviews.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="394">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="29" />
+          <folding>
+            <element signature="e#1636#1637#0" expanded="true" />
+            <element signature="e#1659#1660#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomVideos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
+        <state relative-caret-position="372">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#1743#1744#0" expanded="true" />
+            <element signature="e#1784#1785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+          <folding>
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1628#1629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomAnswers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/response/ResponseStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-572">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/ExceptionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/MathUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/ParamValidateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/UUID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/response/ResponseBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="28" column="49" lean-forward="true" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/RedisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/DruidConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/ApolloConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1678">
+          <caret line="43" column="25" lean-forward="true" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomInterviewsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        <state relative-caret-position="-42">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
           <folding>
             <element signature="e#734#735#0" expanded="true" />
             <element signature="e#768#769#0" expanded="true" />
@@ -1132,53 +1197,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomInterviewsMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        <state relative-caret-position="222">
+          <caret line="107" column="16" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomAnswersService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="101" selection-start-line="101" selection-end-line="104" selection-end-column="17" />
+        <state relative-caret-position="22">
+          <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomUserQuestionsSqlProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="236">
+          <caret line="131" column="51" lean-forward="true" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomUserQuestionsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomUserQuestions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomUserQuestionsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomUserQuestionsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="38" column="4" lean-forward="true" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomAnswersRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomAnswersSqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="110" column="47" lean-forward="true" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomInterviewsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1076">
+          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
           <folding>
-            <element signature="e#1604#1605#0" expanded="true" />
-            <element signature="e#1628#1629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomVideos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-          <folding>
-            <element signature="e#1784#1785#0" expanded="true" />
-            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomInterviewsSqlProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="112" column="17" lean-forward="true" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+        <state relative-caret-position="2002">
+          <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomVideosService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomVideosMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="31" selection-start-line="31" selection-end-line="31" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomVideosSqlProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="103" column="28" lean-forward="true" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
+        <state relative-caret-position="220">
+          <caret line="101" column="58" selection-start-line="101" selection-start-column="58" selection-end-line="101" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="99" column="42" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomWebcastService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmWisdomWebcast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomWebcastSqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-154">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/fallback/JmWisdomWebcastFallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
         </state>
       </provider>
     </entry>

@@ -101,15 +101,16 @@ public class JmWisdomInterviewsSqlProvider{
 			{
 				UPDATE("jm_wisdom_interviews");
 				
-				SET("title = #{title}");
-				SET("content = #{content}");
-				SET("cover_url = #{coverUrl}");
-				//后台管理功能，支持编辑时设置两种排序号，传空或不传代表不参与排序
-				SET("select_order = #{selectOrder}");
-				SET("video_select_order = #{videoSelectOrder}");
 				//前台功能，收藏人数+1，独立操作，用户收藏该访谈时更新
 				if(obj.getFavorites() != null && obj.getFavorites() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("favorites = favorites + 1");
+				}else {
+					//后台管理功能，支持编辑时设置两种排序号，传空或不传代表不参与排序
+					SET("title = #{title}");
+					SET("content = #{content}");
+					SET("cover_url = #{coverUrl}");
+					SET("select_order = #{selectOrder}");
+					SET("video_select_order = #{videoSelectOrder}");
 				}
 
 				SET("update_by = #{updateBy}");

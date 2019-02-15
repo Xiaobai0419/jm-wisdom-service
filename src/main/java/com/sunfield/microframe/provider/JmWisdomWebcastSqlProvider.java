@@ -48,8 +48,19 @@ public class JmWisdomWebcastSqlProvider{
 		sql.append(obj.getPageSize());
 		return sql.toString();
 	}
- 
- 	public String generateFindOneSql(String id){
+
+	public String generateFindOneSql(String id){
+		return new SQL(){
+			{
+				SELECT(COLUMNS);
+				FROM("jm_wisdom_webcast");
+
+				WHERE("id = #{id}");
+			}
+		}.toString();
+	}
+
+	public String generateFindCurrentSql(){
 		//业务特殊需求：前台显示唯一启用的、正在播放的直播，按直播开始时间倒序取第一个，查询条件是启用状态的，开始、结束时间与当前时间比较，当前时间在两者之间，包括头尾，有符合条件的唯一一条返回结果，则显示，没有则不显示。新增直播时，与当前正播放直播时间冲突者必须设置为禁用
 		String sql = new SQL(){
 			{
@@ -58,14 +69,14 @@ public class JmWisdomWebcastSqlProvider{
 
 				WHERE("status = '0'");
 				WHERE("begin_time <= now()");
-				WHERE("end_time >= now()");
+				WHERE("end_time > now()");
 				ORDER_BY("begin_time desc");
 			}
 		}.toString();
 		sql += " LIMIT 0,1 ";
 		return sql;
 	}
-	
+
 	public String generateInsertSql(JmWisdomWebcast obj){
 		return new SQL(){
 			{
@@ -75,9 +86,11 @@ public class JmWisdomWebcastSqlProvider{
 				VALUES("title", "#{title}");
 				VALUES("cover_url", "#{coverUrl}");
 				VALUES("webcast_link", "#{webcastLink}");
+				//根据开始、结束时间与当前正进行直播是否冲突设置状态，及结束时间是否大于开始时间判断，放在业务层
 				VALUES("begin_time", "#{beginTime}");
 				VALUES("end_time", "#{endTime}");
-				VALUES("status", "0");
+				//传递直播状态，数值必须为0或2，前台下拉框写死，逻辑判断放在业务层
+				VALUES("status", "#{status1}");
 				VALUES("create_by", "#{createBy}");
 				VALUES("create_date", "#{createDate}");
 				VALUES("update_by", "#{updateBy}");
@@ -95,8 +108,11 @@ public class JmWisdomWebcastSqlProvider{
 				SET("title = #{title}");
 				SET("cover_url = #{coverUrl}");
 				SET("webcast_link = #{webcastLink}");
+				//根据开始、结束时间与当前正进行直播是否冲突设置状态，及结束时间是否大于开始时间判断，放在业务层
 				SET("begin_time = #{beginTime}");
 				SET("end_time = #{endTime}");
+				//传递直播状态，数值必须为0或2，前台下拉框写死，逻辑判断放在业务层
+				SET("status = #{status1}");
 				SET("update_by = #{updateBy}");
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");

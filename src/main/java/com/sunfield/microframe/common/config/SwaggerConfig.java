@@ -12,6 +12,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -36,7 +39,10 @@ public class SwaggerConfig {
 	
 	@Bean
 	public Docket createRestApi() {
-         return new Docket(DocumentationType.SWAGGER_2)
+		Set<String> protocols = new HashSet<>();
+		protocols.add("http");
+		return new Docket(DocumentationType.SWAGGER_2)
+				.protocols(protocols)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(basepagckage))

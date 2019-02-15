@@ -22,7 +22,7 @@ public class JmWisdomUserQuestions extends BaseDomain{
 	@ApiModelProperty(value="问题/回答/访谈/访谈视频ID，依类型不同，关联问题表或问题回答表或访谈表或访谈视频表ID", dataType="String")
 	private String questionId;
 	
-	@ApiModelProperty(value="赞/踩/收藏，默认0不赞不踩，赞/收藏为1，踩为2，不收藏或视频取消点赞，则不记录或逻辑删除", dataType="Integer")
+	@ApiModelProperty(value="赞/踩/收藏，赞/收藏为1，踩为2，不赞不踩不收藏则不记录，取消赞/踩/收藏，则逻辑删除", dataType="Integer")
 	private Integer yesorno;
 	
 	

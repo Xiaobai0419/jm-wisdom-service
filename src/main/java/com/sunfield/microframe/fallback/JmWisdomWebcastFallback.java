@@ -2,9 +2,7 @@ package com.sunfield.microframe.fallback;
 
 import java.util.List;
 
-import com.sunfield.microframe.common.response.Page;
-import com.sunfield.microframe.common.response.ResponseBean;
-import com.sunfield.microframe.common.response.ResponseStatus;
+import com.sunfield.microframe.common.response.*;
 
 import com.sunfield.microframe.domain.JmWisdomWebcast;
 
@@ -25,13 +23,17 @@ public class JmWisdomWebcastFallback {
     public ResponseBean<JmWisdomWebcast> findOneFallback(JmWisdomWebcast obj) {
 		return new ResponseBean<JmWisdomWebcast>(ResponseStatus.BUSY);
     }
-	
-    public ResponseBean<JmWisdomWebcast> insertFallback(JmWisdomWebcast obj) {
-    	return new ResponseBean<JmWisdomWebcast>(ResponseStatus.BUSY);
+
+    public WebcastResponseBean<JmWisdomWebcast> findCurrentFallback(JmWisdomWebcast obj) {
+        return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.BUSY);
+    }
+
+    public WebcastResponseBean<JmWisdomWebcast> insertFallback(JmWisdomWebcast obj) {
+    	return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.BUSY);
     }
 	
-    public ResponseBean<JmWisdomWebcast> updateFallback(JmWisdomWebcast obj) {
-    	return new ResponseBean<JmWisdomWebcast>(ResponseStatus.BUSY);
+    public WebcastResponseBean<JmWisdomWebcast> updateFallback(JmWisdomWebcast obj) {
+    	return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.BUSY);
     }
 	
     public ResponseBean<JmWisdomWebcast> deleteFallback(JmWisdomWebcast obj) {

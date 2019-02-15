@@ -27,8 +27,18 @@ public class JmWisdomWebcast extends BaseDomain{
 	
 	@ApiModelProperty(value="直播结束时间", dataType="Date")
 	private Date endTime;
-	
-	
+
+	@ApiModelProperty(value="直播启禁用状态", dataType="String")
+	private String status1;
+
+	public String getStatus1() {
+		return status1;
+	}
+
+	public void setStatus1(String status1) {
+		this.status1 = status1;
+	}
+
 	public String getTitle() {
 		return title;
 	}

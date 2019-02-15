@@ -57,7 +57,24 @@ public class JmWisdomUserQuestionsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	//用户获取自身对各类目标对象的赞、踩情况
+	public String generateFindSelfSql(JmWisdomUserQuestions obj){
+		return new SQL(){
+			{
+				SELECT(COLUMNS);
+				FROM("jm_wisdom_user_questions");
+
+				WHERE("type = #{type}");
+				WHERE("user_id = #{userId}");
+				WHERE("question_id = #{questionId}");
+				//只查询有效赞、踩、收藏，去除逻辑删除的（取消过赞、踩、收藏的）
+				WHERE("status = '0'");
+			}
+		}.toString();
+	}
+
+	//用户踩/赞/收藏时插入中间表记录该用户情况，无踩/赞/收藏则不记录，由前台控制一个用户不可踩/赞/收藏多次，只能点击和取消交替进行
 	public String generateInsertSql(JmWisdomUserQuestions obj){
 		return new SQL(){
 			{
@@ -95,7 +112,7 @@ public class JmWisdomUserQuestionsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
 	public String generateDeleteSql(String id){
 		return new SQL(){
 			{
@@ -104,6 +121,22 @@ public class JmWisdomUserQuestionsSqlProvider{
 				SET("status = '1'");
 				
 				WHERE("id = #{id}");
+			}
+		}.toString();
+	}
+
+	//用户取消踩/赞/收藏时，进行逻辑删除
+	public String generateDeleteSelfSql(JmWisdomUserQuestions obj){
+		return new SQL(){
+			{
+				UPDATE("jm_wisdom_user_questions");
+
+				SET("status = '1'");
+
+				WHERE("type = #{type}");
+				WHERE("user_id = #{userId}");
+				WHERE("question_id = #{questionId}");
+				WHERE("yesorno = #{yesorno}");
 			}
 		}.toString();
 	}

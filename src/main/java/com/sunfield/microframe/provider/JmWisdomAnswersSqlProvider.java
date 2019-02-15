@@ -33,9 +33,12 @@ public class JmWisdomAnswersSqlProvider{
 				FROM("jm_wisdom_answers");
 				
 				WHERE("status = '0'");
-				
-				
-				
+
+				//前台功能：传角马问题ID,问题对应回答列表,按日期+点赞数倒序排序
+				if(StringUtils.isNotBlank(obj.getQuestionId())) {
+					WHERE("question_id = #{questionId}");
+					ORDER_BY("date(create_date) desc,ayes desc");
+				}
 			}
 		}.toString();
 	}
@@ -70,8 +73,8 @@ public class JmWisdomAnswersSqlProvider{
 				VALUES("question_id", "#{questionId}");
 				VALUES("user_id", "#{userId}");
 				VALUES("content", "#{content}");
-				VALUES("ayes", "#{ayes}");
-				VALUES("antis", "#{antis}");
+				VALUES("ayes", "0");
+				VALUES("antis", "0");
 				VALUES("status", "0");
 				VALUES("create_by", "#{createBy}");
 				VALUES("create_date", "#{createDate}");
@@ -86,13 +89,15 @@ public class JmWisdomAnswersSqlProvider{
 		return new SQL(){
 			{
 				UPDATE("jm_wisdom_answers");
-				
-				SET("title = #{title}");
-				SET("question_id = #{questionId}");
-				SET("user_id = #{userId}");
-				SET("content = #{content}");
-				SET("ayes = #{ayes}");
-				SET("antis = #{antis}");
+				//前台功能，点赞回答
+				if(obj.getAyes() != null && obj.getAyes() == 1) {
+					SET("ayes = ayes + 1");
+				}
+				//前台功能，踩回答
+				if(obj.getAntis() != null && obj.getAntis() == 1) {
+					SET("antis = antis + 1");
+				}
+
 				SET("update_by = #{updateBy}");
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");
@@ -101,7 +106,8 @@ public class JmWisdomAnswersSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	//后台功能，删评论（逻辑删，删除后前台不显示）
 	public String generateDeleteSql(String id){
 		return new SQL(){
 			{

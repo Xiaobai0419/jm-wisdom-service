@@ -27,7 +27,7 @@ import com.sunfield.microframe.service.JmWisdomQuestionsService;
  * @author sunfield coder
  * 所有业务代码写在Service层，Controller层只保留对业务的调用
  */
-@Api(tags = "角马问答相关接口")
+@Api(tags = "角马问答-角马问题接口（不包含回答）")
 @RestController
 @RequestMapping(value = "/JmWisdomQuestions")
 public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{

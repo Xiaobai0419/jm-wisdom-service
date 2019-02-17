@@ -90,7 +90,7 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 		return service.insert(obj);
     }
 	
-	@ApiOperation(value="更新：传递title，coverUrl，webcastLink，beginTime，endTime，status1（0 启用 2禁用），开始时间不早于结束时间失败，开始时间与当前直播冲突失败")
+	@ApiOperation(value="更新：传递id，title，coverUrl，webcastLink，beginTime，endTime，status1（0 启用 2禁用），开始时间不早于结束时间失败，开始时间与当前直播冲突失败")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")

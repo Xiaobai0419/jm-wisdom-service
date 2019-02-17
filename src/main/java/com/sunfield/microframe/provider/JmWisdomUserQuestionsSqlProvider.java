@@ -60,7 +60,7 @@ public class JmWisdomUserQuestionsSqlProvider{
 
 	//用户获取自身对各类目标对象的赞、踩情况
 	public String generateFindSelfSql(JmWisdomUserQuestions obj){
-		return new SQL(){
+		String sql = new SQL(){
 			{
 				SELECT(COLUMNS);
 				FROM("jm_wisdom_user_questions");
@@ -70,8 +70,12 @@ public class JmWisdomUserQuestionsSqlProvider{
 				WHERE("question_id = #{questionId}");
 				//只查询有效赞、踩、收藏，去除逻辑删除的（取消过赞、踩、收藏的）
 				WHERE("status = '0'");
+				//获取插入时间倒序第一条，也就是最终踩赞情况，防止一个用户对一个对象多个有效踩赞插入的情况
+				ORDER_BY("create_date desc");
 			}
 		}.toString();
+		sql += " LIMIT 0,1 ";
+		return sql;
 	}
 
 	//用户踩/赞/收藏时插入中间表记录该用户情况，无踩/赞/收藏则不记录，由前台控制一个用户不可踩/赞/收藏多次，只能点击和取消交替进行

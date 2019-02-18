@@ -16,6 +16,8 @@ public enum WebcastResponseStatus {
     FORBIDEN,
     //当前无直播
     NO_WEBCAST,
+    //直播非未来时间段
+    PAST,
     //开始时间晚于结束时间
     BEGIN_AFTER_END,
     //与当前直播冲突
@@ -37,6 +39,8 @@ public enum WebcastResponseStatus {
                 return "FORBIDEN";
             case NO_WEBCAST:
                 return "NO_WEBCAST";
+            case PAST:
+                return "PAST";
             case BEGIN_AFTER_END:
                 return "BEGIN_AFTER_END";
             case CONFLICT:
@@ -62,6 +66,8 @@ public enum WebcastResponseStatus {
                 return "无权限";
             case NO_WEBCAST:
                 return "当前无直播";
+            case PAST:
+                return "直播时间段应在还未开始的时间";
             case BEGIN_AFTER_END:
                 return "开始时间应早于结束时间";
             case CONFLICT:

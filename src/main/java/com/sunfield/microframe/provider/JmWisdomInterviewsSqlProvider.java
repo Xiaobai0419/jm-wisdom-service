@@ -46,7 +46,7 @@ public class JmWisdomInterviewsSqlProvider{
 				}
 				//按时间倒序，独立操作
 				else {
-					ORDER_BY("create_date desc");
+					ORDER_BY("update_date desc");
 				}
 				
 			}

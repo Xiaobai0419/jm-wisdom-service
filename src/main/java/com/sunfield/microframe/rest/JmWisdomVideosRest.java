@@ -26,7 +26,7 @@ import com.sunfield.microframe.service.JmWisdomVideosService;
  * jm_wisdom_videos rest
  * @author sunfield coder
  */
-@Api(tags = "角马问答-访谈视频接口")
+@Api(tags = "jm-wisdom-videos")
 @RestController
 @RequestMapping(value = "/JmWisdomVideos")
 public class JmWisdomVideosRest extends JmWisdomVideosFallback{

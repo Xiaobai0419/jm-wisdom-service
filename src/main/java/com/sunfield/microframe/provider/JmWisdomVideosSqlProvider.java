@@ -39,7 +39,7 @@ public class JmWisdomVideosSqlProvider{
 				if(StringUtils.isNotBlank(obj.getInterviewId())){
 					WHERE("interview_id = #{interviewId}");
 				}
-				ORDER_BY("create_date desc");
+				ORDER_BY("update_date desc");
 			}
 		}.toString();
 	}

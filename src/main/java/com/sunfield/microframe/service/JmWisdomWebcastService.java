@@ -1,5 +1,6 @@
 package com.sunfield.microframe.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.sunfield.microframe.common.response.*;
@@ -47,13 +48,17 @@ public class JmWisdomWebcastService implements ITxTransaction{
 	@Transactional
 	public WebcastResponseBean<JmWisdomWebcast> insert(JmWisdomWebcast obj){
 		obj.preInsert();
+		//判断时间段是否完全是一个未来时间段，后台插入需要插入未来直播，到了时间前台用户才能看到
+		if(!obj.getBeginTime().after(new Date()) || !obj.getEndTime().after(new Date())) {
+			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.PAST);
+		}
 		//判断开始时间<结束时间
 		if(obj.getBeginTime().equals(obj.getEndTime()) || obj.getBeginTime().after(obj.getEndTime())) {
 			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.BEGIN_AFTER_END);
 		}
 		//查询是否与当前直播冲突
 		JmWisdomWebcast current = mapper.findCurrent();
-		if(current != null && (obj.getBeginTime().before(current.getEndTime()) || obj.getBeginTime().equals(current.getEndTime()))) {
+		if("0".equals(obj.getStatus1()) && current != null && (obj.getBeginTime().before(current.getEndTime()) || obj.getBeginTime().equals(current.getEndTime()))) {
 			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.CONFLICT);
 		}
 		if(mapper.insert(obj) > 0) {
@@ -66,13 +71,17 @@ public class JmWisdomWebcastService implements ITxTransaction{
 	@Transactional
 	public WebcastResponseBean<JmWisdomWebcast> update(JmWisdomWebcast obj){
 		obj.preUpdate();
+		//判断时间段是否完全是一个未来时间段，后台插入需要插入未来直播，到了时间前台用户才能看到
+		if(!obj.getBeginTime().after(new Date()) || !obj.getEndTime().after(new Date())) {
+			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.PAST);
+		}
 		//判断开始时间<结束时间
 		if(obj.getBeginTime().equals(obj.getEndTime()) || obj.getBeginTime().after(obj.getEndTime())) {
 			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.BEGIN_AFTER_END);
 		}
 		//查询是否与当前直播冲突
 		JmWisdomWebcast current = mapper.findCurrent();
-		if(current != null && (obj.getBeginTime().before(current.getEndTime()) || obj.getBeginTime().equals(current.getEndTime()))) {
+		if("0".equals(obj.getStatus1()) && current != null && (obj.getBeginTime().before(current.getEndTime()) || obj.getBeginTime().equals(current.getEndTime()))) {
 			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.CONFLICT);
 		}
 		if(mapper.update(obj) > 0) {

@@ -26,7 +26,7 @@ import com.sunfield.microframe.service.JmWisdomInterviewsService;
  * jm_wisdom_interviews rest
  * @author sunfield coder
  */
-@Api(tags = "角马问答-访谈接口（不包含直播、访谈视频）")
+@Api(tags = "jm-wisdom-interviews")
 @RestController
 @RequestMapping(value = "/JmWisdomInterviews")
 public class JmWisdomInterviewsRest extends JmWisdomInterviewsFallback{

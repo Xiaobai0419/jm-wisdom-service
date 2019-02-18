@@ -24,7 +24,7 @@ import com.sunfield.microframe.service.JmWisdomWebcastService;
  * jm_wisdom_webcast rest
  * @author sunfield coder
  */
-@Api(tags = "角马问答-访谈直播接口")
+@Api(tags = "jm-wisdom-webcast")
 @RestController
 @RequestMapping(value = "/JmWisdomWebcast")
 public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{

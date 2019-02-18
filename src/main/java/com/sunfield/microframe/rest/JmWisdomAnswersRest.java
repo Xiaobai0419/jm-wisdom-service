@@ -26,7 +26,7 @@ import com.sunfield.microframe.service.JmWisdomAnswersService;
  * jm_wisdom_answers rest
  * @author sunfield coder
  */
-@Api(tags = "角马问答-角马问题回答接口")
+@Api(tags = "jm-wisdom-answers")
 @RestController
 @RequestMapping(value = "/JmWisdomAnswers")
 public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{

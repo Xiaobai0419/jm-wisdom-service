@@ -26,7 +26,7 @@ import com.sunfield.microframe.service.JmWisdomUserQuestionsService;
  * jm_wisdom_user_questions rest
  * @author sunfield coder
  */
-@Api(tags = "角马问答-用户对角马问题，回答，访谈，视频的赞、踩、收藏及对应取消的高亮效果接口")
+@Api(tags = "jm-wisdom-user-questions")
 @RestController
 @RequestMapping(value = "/JmWisdomUserQuestions")
 public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{

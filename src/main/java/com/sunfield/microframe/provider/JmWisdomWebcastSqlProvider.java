@@ -34,8 +34,8 @@ public class JmWisdomWebcastSqlProvider{
 				//业务特殊需求：查询所有启用、禁用直播，禁用标识为2，1为删除标识
 				WHERE("status != '1'");
 				
-				//仅用于后台直播管理，启用/禁用第一排序，直播开始时间倒序第二排序，创建时间倒序第三排序
-				ORDER_BY("status,begin_time desc,create_date desc");
+				//仅用于后台直播管理，启用/禁用第一排序，直播开始时间倒序第二排序，创建/更新时间倒序第三排序
+				ORDER_BY("status,begin_time desc,update_date desc");
 			}
 		}.toString();
 	}
@@ -67,10 +67,10 @@ public class JmWisdomWebcastSqlProvider{
 				SELECT(COLUMNS);
 				FROM("jm_wisdom_webcast");
 
-				WHERE("status = '0'");
+				WHERE("status = '0'");//有效非禁用直播
 				WHERE("begin_time <= now()");
 				WHERE("end_time > now()");
-				ORDER_BY("begin_time desc");
+				ORDER_BY("begin_time desc,update_date desc");//按直播开始时间倒序第一序，插入/更新时间倒序第二序，取最近一条当前直播，防止多条有效当前直播的情况（这种情况出现在事先插入多条有效未来直播，这是可以做到的，因为业务层冲突判断加上上面的只查询有效非禁用直播只与当前时间比较，未来直播可以绕过这个限制）
 			}
 		}.toString();
 		sql += " LIMIT 0,1 ";

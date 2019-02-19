@@ -1,5 +1,6 @@
 package com.sunfield.microframe.provider;
 
+import com.sunfield.microframe.domain.JmWisdomQuestions;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 
@@ -62,7 +63,26 @@ public class JmWisdomAnswersSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	public String generateFindFirstSql(JmWisdomQuestions obj){
+		String sql = new SQL(){
+			{
+				SELECT(COLUMNS);
+				FROM("jm_wisdom_answers");
+
+				WHERE("status = '0'");
+
+				//前台功能：传角马问题ID,问题对应回答列表第一条,按日期+点赞数倒序排序
+				if(StringUtils.isNotBlank(obj.getId())) {
+					WHERE("question_id = #{id}");
+					ORDER_BY("date(create_date) desc,ayes desc");
+				}
+			}
+		}.toString();
+		sql += " limit 0,1 ";
+		return sql;
+	}
+
 	public String generateInsertSql(JmWisdomAnswers obj){
 		return new SQL(){
 			{

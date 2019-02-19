@@ -24,7 +24,10 @@ public class JmWisdomQuestions extends BaseDomain{
 	
 	@ApiModelProperty(value="问题详情", dataType="String")
 	private String content;
-	
+
+	@ApiModelProperty(value="上传媒体文件类型，1图片 2视频", dataType="Integer")
+	private Integer mediaType;
+
 	@ApiModelProperty(value="图片/视频存储地址,多个逗号分隔，OSS存储", dataType="String")
 	private String ossUrls;
 	
@@ -44,6 +47,8 @@ public class JmWisdomQuestions extends BaseDomain{
 
 	private JmIndustries industry;
 
+	private JmWisdomAnswers firstAnswer;
+
 	public JmAppUser getUser() {
 		return user;
 	}
@@ -58,6 +63,14 @@ public class JmWisdomQuestions extends BaseDomain{
 
 	public void setIndustry(JmIndustries industry) {
 		this.industry = industry;
+	}
+
+	public JmWisdomAnswers getFirstAnswer() {
+		return firstAnswer;
+	}
+
+	public void setFirstAnswer(JmWisdomAnswers firstAnswer) {
+		this.firstAnswer = firstAnswer;
 	}
 
 	public String getTitle() {
@@ -91,7 +104,15 @@ public class JmWisdomQuestions extends BaseDomain{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
+	public Integer getMediaType() {
+		return mediaType;
+	}
+
+	public void setMediaType(Integer mediaType) {
+		this.mediaType = mediaType;
+	}
+
 	public String getOssUrls() {
 		return ossUrls;
 	}

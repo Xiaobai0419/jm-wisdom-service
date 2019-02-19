@@ -74,7 +74,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="新增：传递content，industryId，userId，ossUrls，title，其他不传")
+	@ApiOperation(value="新增：传递content，industryId，userId，mediaType（1图片 2视频），ossUrls，title，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "insertFallback")

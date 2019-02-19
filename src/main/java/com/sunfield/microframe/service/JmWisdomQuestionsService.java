@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.sunfield.microframe.domain.JmAppUser;
 import com.sunfield.microframe.domain.JmIndustries;
+import com.sunfield.microframe.domain.JmWisdomAnswers;
 import com.sunfield.microframe.feign.JmAppUserFeignService;
 import com.sunfield.microframe.feign.JmIndustriesFeignService;
+import com.sunfield.microframe.mapper.JmWisdomAnswersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 
 	@Autowired
 	private JmWisdomQuestionsMapper mapper;
+	@Autowired
+	private JmWisdomAnswersMapper answersMapper;
 	@Autowired
 	@Qualifier("jmAppUserFeignService")
 	private JmAppUserFeignService jmAppUserFeignService;
@@ -54,6 +58,10 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 			if(pageList != null && pageList.size() > 0) {
 				JmIndustries jmIndustriesInput = new JmIndustries();
 				for(JmWisdomQuestions jmWisdomQuestions : pageList) {
+					if(jmWisdomQuestions != null && jmWisdomQuestions.getId() != null) {
+						JmWisdomAnswers firstAnswer = answersMapper.findFirst(jmWisdomQuestions);
+						jmWisdomQuestions.setFirstAnswer(firstAnswer);
+					}
 					if(jmWisdomQuestions != null && jmWisdomQuestions.getUserId() != null) {//userId为null会造成Feign服务调用失败
 						//远程调用用户服务，获取业务所需用户具体信息，目前用于后台管理列表功能
 						JmAppUser user = findUser(jmWisdomQuestions.getUserId());//注意不要写成obj,改善参数命名方式以区分！

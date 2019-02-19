@@ -17,6 +17,7 @@ public class JmWisdomQuestionsSqlProvider{
  									" industry_id AS industryId,"+
  									" user_id AS userId,"+
  									" content AS content,"+
+									" media_type AS mediaType,"+
  									" oss_urls AS ossUrls,"+
  									" ayes AS ayes,"+
  									" antis AS antis,"+
@@ -81,6 +82,7 @@ public class JmWisdomQuestionsSqlProvider{
 				VALUES("industry_id", "#{industryId}");
 				VALUES("user_id", "#{userId}");
 				VALUES("content", "#{content}");
+				VALUES("media_type", "#{mediaType}");
 				VALUES("oss_urls", "#{ossUrls}");
 				VALUES("ayes", "0");
 				VALUES("antis", "0");

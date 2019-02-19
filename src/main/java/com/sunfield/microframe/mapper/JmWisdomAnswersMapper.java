@@ -2,6 +2,7 @@ package com.sunfield.microframe.mapper;
 
 import java.util.List;
 
+import com.sunfield.microframe.domain.JmWisdomQuestions;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.SelectProvider;
@@ -40,6 +41,14 @@ public interface JmWisdomAnswersMapper{
 	 */
 	@SelectProvider(type=JmWisdomAnswersSqlProvider.class, method="generateFindOneSql")
 	public JmWisdomAnswers findOne(String id);
+
+	/**
+	 * 第一条回答（按日期+点赞数倒序排序）查询
+	 * @param obj
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomAnswersSqlProvider.class, method="generateFindFirstSql")
+	public JmWisdomAnswers findFirst(JmWisdomQuestions obj);//传递问题id
 
 	/**
 	 * 插入单行

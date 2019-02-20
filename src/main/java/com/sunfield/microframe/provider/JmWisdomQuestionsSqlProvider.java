@@ -38,9 +38,10 @@ public class JmWisdomQuestionsSqlProvider{
 				
 				WHERE("status = '0'");
 				//按行业分类列表，日期（按天）/赞数综合排序，可集成分页，独立操作
+				//修改：以精确时间为第三序，让同一天中相同赞数的按时间倒序排列
 				if(StringUtils.isNotBlank(obj.getIndustryId())){
 					WHERE("industry_id = #{industryId}");
-					ORDER_BY("date(create_date) desc,ayes desc");//使用函数会拖累性能，后期根据需要优化
+					ORDER_BY("date(create_date) desc,ayes desc,create_date desc");//使用函数会拖累性能，后期根据需要优化
 				}
 				//按精品排序列表，独立操作
 				if(obj.getSelectOrder() != null && obj.getSelectOrder() == 1){

@@ -34,7 +34,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@Autowired
 	private JmWisdomAnswersService service;
 	
-	@ApiOperation(value="查询列表：前台功能，传questionId，问题对应回答列表")
+	@ApiOperation(value="查询列表：前台功能，传questionId，visitUserId（未登录访问可不传），问题对应回答列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -47,7 +47,8 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询：后台管理，传递分页参数，角马问答板块所有评论列表")
+	@ApiOperation(value="分页查询：前台功能，传questionId，visitUserId（未登录访问可不传），传递分页参数，问题对应回答列表；" +
+			"后台管理，传递分页参数，角马问答板块所有评论列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
@@ -55,7 +56,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
     	return new ResponseBean<Page<JmWisdomAnswers>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 
-	@ApiOperation(value="根据主键查询：传id,其他不传")
+	@ApiOperation(value="根据主键查询：传id,visitUserId（未登录访问可不传），其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -63,7 +64,7 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
     	}
-    	JmWisdomAnswers object = service.findOne(obj.getId());
+    	JmWisdomAnswers object = service.findOne(obj);
     	if(object != null) {
     		return new ResponseBean<JmWisdomAnswers>(ResponseStatus.SUCCESS, object);
     	} else {

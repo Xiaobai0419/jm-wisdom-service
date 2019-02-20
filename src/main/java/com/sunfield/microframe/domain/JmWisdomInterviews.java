@@ -29,9 +29,30 @@ public class JmWisdomInterviews extends BaseDomain{
 	private Integer videoSelectOrder;
 	
 	@ApiModelProperty(value="收藏人数,缓存", dataType="Integer")
-	private Integer favorites;
-	
-	
+	private Integer favorites = 0;
+
+	@ApiModelProperty(value="访问用户ID,关联用户信息表ID", dataType="String")
+	private String visitUserId;
+
+	@ApiModelProperty(value="访问者对该访谈的收藏状态", dataType="Integer")
+	private Integer visitUserYesOrNo = 0;
+
+	public String getVisitUserId() {
+		return visitUserId;
+	}
+
+	public void setVisitUserId(String visitUserId) {
+		this.visitUserId = visitUserId;
+	}
+
+	public Integer getVisitUserYesOrNo() {
+		return visitUserYesOrNo;
+	}
+
+	public void setVisitUserYesOrNo(Integer visitUserYesOrNo) {
+		this.visitUserYesOrNo = visitUserYesOrNo;
+	}
+
 	public String getTitle() {
 		return title;
 	}

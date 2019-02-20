@@ -32,13 +32,13 @@ public class JmWisdomQuestions extends BaseDomain{
 	private String ossUrls;
 	
 	@ApiModelProperty(value="赞数,缓存", dataType="Integer")
-	private Integer ayes;
+	private Integer ayes = 0;
 	
 	@ApiModelProperty(value="踩数,缓存", dataType="Integer")
-	private Integer antis;
+	private Integer antis = 0;
 	
 	@ApiModelProperty(value="回答数", dataType="Integer")
-	private Integer answers;
+	private Integer answers = 0;
 	
 	@ApiModelProperty(value="精品排序，从1开始，空代表非精品问答", dataType="Integer")
 	private Integer selectOrder;
@@ -48,6 +48,28 @@ public class JmWisdomQuestions extends BaseDomain{
 	private JmIndustries industry;
 
 	private JmWisdomAnswers firstAnswer;
+
+	@ApiModelProperty(value="访问用户ID,关联用户信息表ID", dataType="String")
+	private String visitUserId;
+
+	@ApiModelProperty(value="访问者对该问题的踩赞状态", dataType="Integer")
+	private Integer visitUserYesOrNo = 0;
+
+	public String getVisitUserId() {
+		return visitUserId;
+	}
+
+	public void setVisitUserId(String visitUserId) {
+		this.visitUserId = visitUserId;
+	}
+
+	public Integer getVisitUserYesOrNo() {
+		return visitUserYesOrNo;
+	}
+
+	public void setVisitUserYesOrNo(Integer visitUserYesOrNo) {
+		this.visitUserYesOrNo = visitUserYesOrNo;
+	}
 
 	public JmAppUser getUser() {
 		return user;

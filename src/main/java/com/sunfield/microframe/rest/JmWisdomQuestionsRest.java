@@ -35,8 +35,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 	@Autowired
 	private JmWisdomQuestionsService service;
 
-	@ApiOperation(value="查询列表：业务1：精品查询，selectOrder字段传1，其他不传；" +
-			"业务2：前台按行业显示，industryId字段传行业id，其他不传")
+	@ApiOperation(value="查询列表：精品查询，selectOrder字段传1，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findListFallback")
@@ -49,8 +48,8 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询：后台功能，全行业分页列表显示，传递分页信息，其他不传；" +
-			"如果前台列表业务也需要分页，也可传递对应字段调用该分页服务")
+	@ApiOperation(value="分页查询：前台：按行业显示，industryId字段传行业id，visitUserId（未登录访问可不传），传递分页信息，其他不传" +
+			"后台：全行业分页列表显示，传递分页信息，其他不传；")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
@@ -58,7 +57,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
-	@ApiOperation(value="根据主键查询：传递id,其他不传")
+	@ApiOperation(value="根据主键查询：传递id，visitUserId（未登录访问可不传）,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -66,7 +65,7 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomQuestions>(ResponseStatus.PARAMS_ERROR);
     	}
-    	JmWisdomQuestions jmWisdomQuestions = service.findOne(obj.getId());
+    	JmWisdomQuestions jmWisdomQuestions = service.findOne(obj);
     	if(jmWisdomQuestions != null) {
     		return new ResponseBean<JmWisdomQuestions>(ResponseStatus.SUCCESS, jmWisdomQuestions);
     	} else {

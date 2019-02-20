@@ -58,7 +58,7 @@ public class JmWisdomInterviewsRest extends JmWisdomInterviewsFallback{
     	return new ResponseBean<Page<JmWisdomInterviews>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
-	@ApiOperation(value="根据主键查询：传递id字段，其他不传")
+	@ApiOperation(value="根据主键查询：传递id，visitUserId（未登录访问可不传）字段，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomInterviews")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -66,7 +66,7 @@ public class JmWisdomInterviewsRest extends JmWisdomInterviewsFallback{
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomInterviews>(ResponseStatus.PARAMS_ERROR);
     	}
-    	JmWisdomInterviews object = service.findOne(obj.getId());
+    	JmWisdomInterviews object = service.findOne(obj);
     	if(object != null) {
     		return new ResponseBean<JmWisdomInterviews>(ResponseStatus.SUCCESS, object);
     	} else {

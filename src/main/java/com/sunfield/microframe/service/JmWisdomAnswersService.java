@@ -3,7 +3,10 @@ package com.sunfield.microframe.service;
 import java.util.List;
 
 import com.sunfield.microframe.domain.JmAppUser;
+import com.sunfield.microframe.domain.JmWisdomUserQuestions;
 import com.sunfield.microframe.feign.JmAppUserFeignService;
+import com.sunfield.microframe.mapper.JmWisdomUserQuestionsMapper;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,8 @@ public class JmWisdomAnswersService implements ITxTransaction{
 	@Autowired
 	private JmWisdomAnswersMapper mapper;
 	@Autowired
+	private JmWisdomUserQuestionsMapper jmWisdomUserQuestionsMapper;
+	@Autowired
 	@Qualifier("jmAppUserFeignService")
 	private JmAppUserFeignService jmAppUserFeignService;
 
@@ -36,10 +41,19 @@ public class JmWisdomAnswersService implements ITxTransaction{
 	public List<JmWisdomAnswers> findList(JmWisdomAnswers obj){
 		List<JmWisdomAnswers> list = mapper.findList(obj);
 		if(list != null && list.size() > 0) {
+			JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
 			for(JmWisdomAnswers answers : list) {
-				if(answers != null && answers.getUserId() != null) {
+				if(answers != null && StringUtils.isNotBlank(answers.getUserId())) {
 					JmAppUser user = findUser(answers.getUserId());
 					answers.setUser(user);
+				}
+				//新增查询：访问用户对该回答的踩赞状态
+				if(answers != null && StringUtils.isNotBlank(obj.getVisitUserId())) {//注意是传入对象的访问用户id,必须判断，后台管理或未登录用户可以不传递访问者id
+					jmWisdomUserQuestions.setType(2);
+					jmWisdomUserQuestions.setQuestionId(answers.getId());
+					jmWisdomUserQuestions.setUserId(obj.getVisitUserId());//注意是传入对象的访问用户id
+					JmWisdomUserQuestions result = jmWisdomUserQuestionsMapper.findOne(jmWisdomUserQuestions);
+					answers.setVisitUserYesOrNo((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
 				}
 			}
 		}
@@ -51,10 +65,19 @@ public class JmWisdomAnswersService implements ITxTransaction{
 		if(!totalList.isEmpty()){
 			List<JmWisdomAnswers> pageList = mapper.findPage(obj);
 			if(pageList != null && pageList.size() > 0) {
+				JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
 				for(JmWisdomAnswers answers : pageList) {
-					if(answers != null && answers.getUserId() != null) {
+					if(answers != null && StringUtils.isNotBlank(answers.getUserId())) {
 						JmAppUser user = findUser(answers.getUserId());
 						answers.setUser(user);
+					}
+					//新增查询：访问用户对该回答的踩赞状态
+					if(answers != null && StringUtils.isNotBlank(obj.getVisitUserId())) {//注意是传入对象的访问用户id,必须判断，后台管理或未登录用户可以不传递访问者id
+						jmWisdomUserQuestions.setType(2);
+						jmWisdomUserQuestions.setQuestionId(answers.getId());
+						jmWisdomUserQuestions.setUserId(obj.getVisitUserId());//注意是传入对象的访问用户id
+						JmWisdomUserQuestions result = jmWisdomUserQuestionsMapper.findOne(jmWisdomUserQuestions);
+						answers.setVisitUserYesOrNo((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
 					}
 				}
 			}
@@ -64,11 +87,20 @@ public class JmWisdomAnswersService implements ITxTransaction{
 		}
 	}
 	
-	public JmWisdomAnswers findOne(String id){
-		JmWisdomAnswers answers = mapper.findOne(id);
+	public JmWisdomAnswers findOne(JmWisdomAnswers jmWisdomAnswers){
+		JmWisdomAnswers answers = mapper.findOne(jmWisdomAnswers.getId());
 		if(answers != null && answers.getUserId() != null) {
 			JmAppUser user = findUser(answers.getUserId());
 			answers.setUser(user);
+		}
+		JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
+		//新增查询：访问用户对该回答的踩赞状态
+		if(answers != null && StringUtils.isNotBlank(jmWisdomAnswers.getVisitUserId())) {//注意是传入对象的访问用户id,必须判断，后台管理或未登录用户可以不传递访问者id
+			jmWisdomUserQuestions.setType(2);
+			jmWisdomUserQuestions.setQuestionId(answers.getId());
+			jmWisdomUserQuestions.setUserId(jmWisdomAnswers.getVisitUserId());//注意是传入对象的访问用户id
+			JmWisdomUserQuestions result = jmWisdomUserQuestionsMapper.findOne(jmWisdomUserQuestions);
+			answers.setVisitUserYesOrNo((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
 		}
 		return answers;
 	}
@@ -97,5 +129,10 @@ public class JmWisdomAnswersService implements ITxTransaction{
 	public int delete(String id){
 		return mapper.delete(id);
 	}
-	
+
+
+	public static void main(String[] args) {
+		JmWisdomUserQuestions result = null;
+		System.out.println((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
+	}
 }

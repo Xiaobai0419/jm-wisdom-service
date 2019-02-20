@@ -29,15 +29,36 @@ public class JmWisdomVideos extends BaseDomain{
 	private Integer allowComments;
 
 	@ApiModelProperty(value="赞数,缓存，允许评论和点赞时记录值", dataType="Integer")
-	private Integer ayes;
+	private Integer ayes = 0;
 
 	@ApiModelProperty(value="是否会员专属，1是，2否", dataType="Integer")
 	private Integer leaguerOnly;
 	
 	@ApiModelProperty(value="免费时长，会员专属时才有值，可为空，空代表不限制，数值代表免费时长，单位秒", dataType="Integer")
-	private Integer freeDuration;
-	
-	
+	private Integer freeDuration = 0;
+
+	@ApiModelProperty(value="访问用户ID,关联用户信息表ID", dataType="String")
+	private String visitUserId;
+
+	@ApiModelProperty(value="访问者对该视频的赞状态", dataType="Integer")
+	private Integer visitUserYesOrNo = 0;
+
+	public String getVisitUserId() {
+		return visitUserId;
+	}
+
+	public void setVisitUserId(String visitUserId) {
+		this.visitUserId = visitUserId;
+	}
+
+	public Integer getVisitUserYesOrNo() {
+		return visitUserYesOrNo;
+	}
+
+	public void setVisitUserYesOrNo(Integer visitUserYesOrNo) {
+		this.visitUserYesOrNo = visitUserYesOrNo;
+	}
+
 	public String getTitle() {
 		return title;
 	}

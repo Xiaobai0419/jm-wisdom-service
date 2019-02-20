@@ -47,7 +47,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="分页查询：后台功能，访谈对应视频列表，传递interviewId，分页信息")
+	@ApiOperation(value="分页查询：访谈对应视频列表，传递interviewId，分页信息")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findPageFallback")
@@ -55,7 +55,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
     	return new ResponseBean<Page<JmWisdomVideos>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
 	
-	@ApiOperation(value="根据主键查询：传id,其他不传")
+	@ApiOperation(value="根据主键查询：传id，visitUserId（未登录访问可不传）字段,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "findOneFallback")
@@ -63,7 +63,7 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomVideos>(ResponseStatus.PARAMS_ERROR);
     	}
-    	JmWisdomVideos object = service.findOne(obj.getId());
+    	JmWisdomVideos object = service.findOne(obj);
     	if(object != null) {
     		return new ResponseBean<JmWisdomVideos>(ResponseStatus.SUCCESS, object);
     	} else {

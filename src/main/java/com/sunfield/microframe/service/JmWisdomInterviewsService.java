@@ -2,6 +2,9 @@ package com.sunfield.microframe.service;
 
 import java.util.List;
 
+import com.sunfield.microframe.domain.JmWisdomUserQuestions;
+import com.sunfield.microframe.mapper.JmWisdomUserQuestionsMapper;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +25,8 @@ public class JmWisdomInterviewsService implements ITxTransaction{
 
 	@Autowired
 	private JmWisdomInterviewsMapper mapper;
+	@Autowired
+	private JmWisdomUserQuestionsMapper jmWisdomUserQuestionsMapper;
 	
 	public List<JmWisdomInterviews> findList(JmWisdomInterviews obj){
 		return mapper.findList(obj);
@@ -37,8 +42,19 @@ public class JmWisdomInterviewsService implements ITxTransaction{
 		}
 	}
 	
-	public JmWisdomInterviews findOne(String id){
-		return mapper.findOne(id);
+	public JmWisdomInterviews findOne(JmWisdomInterviews interviews){
+
+		JmWisdomInterviews jmWisdomInterviews = mapper.findOne(interviews.getId());
+		JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
+		//新增查询：访问用户对该访谈的收藏状态
+		if(jmWisdomInterviews != null && StringUtils.isNotBlank(interviews.getVisitUserId())) {//注意是传入对象的访问用户id,必须判断，后台管理或未登录用户可以不传递访问者id
+			jmWisdomUserQuestions.setType(3);
+			jmWisdomUserQuestions.setQuestionId(jmWisdomInterviews.getId());
+			jmWisdomUserQuestions.setUserId(interviews.getVisitUserId());//注意是传入对象的访问用户id
+			JmWisdomUserQuestions result = jmWisdomUserQuestionsMapper.findOne(jmWisdomUserQuestions);
+			jmWisdomInterviews.setVisitUserYesOrNo((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
+		}
+		return jmWisdomInterviews;
 	}
 	
 	@Transactional

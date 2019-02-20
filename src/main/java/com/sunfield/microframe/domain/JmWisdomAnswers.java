@@ -26,12 +26,34 @@ public class JmWisdomAnswers extends BaseDomain{
 	private String content;
 	
 	@ApiModelProperty(value="赞数,缓存", dataType="Integer")
-	private Integer ayes;
+	private Integer ayes = 0;
 	
 	@ApiModelProperty(value="踩数,缓存", dataType="Integer")
-	private Integer antis;
+	private Integer antis = 0;
 
 	private JmAppUser user;
+
+	@ApiModelProperty(value="访问用户ID,关联用户信息表ID", dataType="String")
+	private String visitUserId;
+
+	@ApiModelProperty(value="访问者对该回答的踩赞状态", dataType="Integer")
+	private Integer visitUserYesOrNo = 0;
+
+	public String getVisitUserId() {
+		return visitUserId;
+	}
+
+	public void setVisitUserId(String visitUserId) {
+		this.visitUserId = visitUserId;
+	}
+
+	public Integer getVisitUserYesOrNo() {
+		return visitUserYesOrNo;
+	}
+
+	public void setVisitUserYesOrNo(Integer visitUserYesOrNo) {
+		this.visitUserYesOrNo = visitUserYesOrNo;
+	}
 
 	public JmAppUser getUser() {
 		return user;

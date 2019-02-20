@@ -23,7 +23,7 @@ public class JmWisdomUserQuestions extends BaseDomain{
 	private String questionId;
 	
 	@ApiModelProperty(value="赞/踩/收藏，赞/收藏为1，踩为2，不赞不踩不收藏则不记录，取消赞/踩/收藏，则逻辑删除", dataType="Integer")
-	private Integer yesorno;
+	private Integer yesorno = 0;
 	
 	
 	public Integer getType() {

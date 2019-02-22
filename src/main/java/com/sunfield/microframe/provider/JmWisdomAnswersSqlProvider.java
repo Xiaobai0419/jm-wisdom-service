@@ -38,7 +38,7 @@ public class JmWisdomAnswersSqlProvider{
 				//前台功能：传角马问题ID,问题对应回答列表,按日期+点赞数倒序排序
 				if(StringUtils.isNotBlank(obj.getQuestionId())) {
 					WHERE("question_id = #{questionId}");
-					ORDER_BY("date(create_date) desc,ayes desc");
+					ORDER_BY("date(create_date) desc,ayes desc,create_date desc");
 				}
 			}
 		}.toString();
@@ -75,7 +75,7 @@ public class JmWisdomAnswersSqlProvider{
 				//前台功能：传角马问题ID,问题对应回答列表第一条,按日期+点赞数倒序排序
 				if(StringUtils.isNotBlank(obj.getId())) {
 					WHERE("question_id = #{id}");
-					ORDER_BY("date(create_date) desc,ayes desc");
+					ORDER_BY("date(create_date) desc,ayes desc,create_date desc");
 				}
 			}
 		}.toString();
@@ -122,6 +122,27 @@ public class JmWisdomAnswersSqlProvider{
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");
 				
+				WHERE("id = #{id}");
+			}
+		}.toString();
+	}
+
+	//按业务条件拼接不同的sql--专门用于用户取消赞/踩/收藏时对应字段数值减1
+	public String generateUpdateCancelSql(JmWisdomAnswers obj){
+		return new SQL(){
+			{
+				UPDATE("jm_wisdom_answers");
+				if(obj.getAyes() != null && obj.getAyes() == 1) {
+					SET("ayes = ayes - 1");
+				}
+				if(obj.getAntis() != null && obj.getAntis() == 1) {
+					SET("antis = antis - 1");
+				}
+
+				SET("update_by = #{updateBy}");
+				SET("update_date = #{updateDate}");
+				SET("remarks = #{remarks}");
+
 				WHERE("id = #{id}");
 			}
 		}.toString();

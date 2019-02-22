@@ -121,7 +121,26 @@ public class JmWisdomInterviewsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	//按业务条件拼接不同的sql--专门用于用户取消赞/踩/收藏时对应字段数值减1
+	public String generateUpdateCancelSql(JmWisdomInterviews obj){
+		return new SQL(){
+			{
+				UPDATE("jm_wisdom_interviews");
+
+				if(obj.getFavorites() != null && obj.getFavorites() == 1) {//缺少非空判断时，不传该字段会报错
+					SET("favorites = favorites - 1");
+				}
+
+				SET("update_by = #{updateBy}");
+				SET("update_date = #{updateDate}");
+				SET("remarks = #{remarks}");
+
+				WHERE("id = #{id}");
+			}
+		}.toString();
+	}
+
 	public String generateDeleteSql(String id){
 		return new SQL(){
 			{

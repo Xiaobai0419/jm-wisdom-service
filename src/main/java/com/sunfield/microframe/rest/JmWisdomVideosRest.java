@@ -86,8 +86,8 @@ public class JmWisdomVideosRest extends JmWisdomVideosFallback{
 		}
     }
 	
-	@ApiOperation(value="更新：业务1：前台用户点赞（视频允许评论点赞时），传id，ayes传1，其他不传" +
-			"业务2：后台功能，传id，title，coverUrl，videoUrl，" +
+	@ApiOperation(value="更新：前台禁用！" +
+			"后台功能，传id，title，coverUrl，videoUrl，" +
 			"allowComments（1 允许评论 2不允许评论），leaguerOnly（1 会员专属 2 非会员专属），" +
 			"freeDuration（会员专属时才有值，可为空，空代表不限制，数值代表免费时长）")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomVideos")

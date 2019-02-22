@@ -88,8 +88,8 @@ public class JmWisdomInterviewsRest extends JmWisdomInterviewsFallback{
 		}
     }
 	
-	@ApiOperation(value="更新：业务1：前台收藏功能，传id，favorites传1，其他不传；" +
-			"业务2：后台功能，传递id，title，content，coverUrl，selectOrder，videoSelectOrder，" +
+	@ApiOperation(value="更新：前台禁用！" +
+			"后台功能，传递id，title，content，coverUrl，selectOrder，videoSelectOrder，" +
 			"支持编辑时设置两种排序号，传空或不传代表不参与排序")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomInterviews")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)

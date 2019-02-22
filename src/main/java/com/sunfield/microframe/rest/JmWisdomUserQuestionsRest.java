@@ -55,19 +55,19 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 //    	return new ResponseBean<Page<JmWisdomUserQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
 //    }
 	
-	@ApiOperation(value="查询自身：用户获取自身对各类目标对象的赞、踩、收藏情况，传递type，userId，questionId字段，" +
-			"其他不传，无数据返回代表用户对该对象没有任何赞、踩、收藏")
-	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
-	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findOneFallback")
-    public ResponseBean<JmWisdomUserQuestions> findOne(@RequestBody JmWisdomUserQuestions obj) {
-    	JmWisdomUserQuestions object = service.findOne(obj);
-    	if(object != null) {
-    		return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.SUCCESS, object);
-    	} else {
-    		return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.NO_DATA);
-		}
-    }
+//	@ApiOperation(value="查询自身：用户获取自身对各类目标对象的赞、踩、收藏情况，传递type，userId，questionId字段，" +
+//			"其他不传，无数据返回代表用户对该对象没有任何赞、踩、收藏")
+//	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
+//	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
+//	@HystrixCommand(fallbackMethod = "findOneFallback")
+//    public ResponseBean<JmWisdomUserQuestions> findOne(@RequestBody JmWisdomUserQuestions obj) {
+//    	JmWisdomUserQuestions object = service.findOne(obj);
+//    	if(object != null) {
+//    		return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.SUCCESS, object);
+//    	} else {
+//    		return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.NO_DATA);
+//		}
+//    }
 	
 	@ApiOperation(value="新增：用户对各类目标对象的赞、踩、收藏，传递type，userId，questionId，yesorno字段，" +
 			"其中统一的部分：questionId为业务对象ID,赞、收藏时，yesorno字段传1，踩时，yesorno字段传2，" +

@@ -86,9 +86,8 @@ public class JmWisdomQuestionsRest extends JmWisdomQuestionsFallback{
 		}
     }
 	
-	@ApiOperation(value="更新：业务1：用户点赞，传id，ayes字段传1，其他不传；业务2：用户踩，传id，antis字段传1，" +
-			"其他不传；业务3：用户新回答，传id，answers字段传1，其他不传；业务4：设置精品排序，后台管理功能，传id，" +
-			"selectOrder字段传需要设置的序号，其他不传")
+	@ApiOperation(value="更新：设置精品排序，后台管理功能，传id，" +
+			"selectOrder字段传需要设置的序号，其他不传；不允许其他功能使用！")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@HystrixCommand(fallbackMethod = "updateFallback")

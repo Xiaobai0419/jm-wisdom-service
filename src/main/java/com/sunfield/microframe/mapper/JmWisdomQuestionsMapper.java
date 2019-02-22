@@ -58,6 +58,14 @@ public interface JmWisdomQuestionsMapper{
 	public int update(JmWisdomQuestions obj);
 
 	/**
+	 * 更新单行--专门用于用户取消赞/踩/收藏时对应字段数值减1
+	 * @param obj
+	 * @return
+	 */
+	@UpdateProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateUpdateCancelSql")
+	public int updateCancel(JmWisdomQuestions obj);
+
+	/**
 	 * 删除单行（一般为逻辑删除）
 	 * @param id
 	 * @return

@@ -128,7 +128,34 @@ public class JmWisdomQuestionsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	//按业务条件拼接不同的sql--专门用于用户取消赞/踩/收藏时对应字段数值减1
+	public String generateUpdateCancelSql(JmWisdomQuestions obj){
+		return new SQL(){
+			{
+				UPDATE("jm_wisdom_questions");
+				//赞-1
+				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+					SET("ayes = ayes - 1");
+				}
+				//踩-1
+				if(obj.getAntis() != null && obj.getAntis() == 1) {
+					SET("antis = antis - 1");
+				}
+				//回答数-1，用于后台删除回答
+				if(obj.getAnswers() != null && obj.getAnswers() == 1) {
+					SET("answers = answers - 1");
+				}
+
+				SET("update_by = #{updateBy}");
+				SET("update_date = #{updateDate}");
+				SET("remarks = #{remarks}");
+
+				WHERE("id = #{id}");
+			}
+		}.toString();
+	}
+
 	public String generateDeleteSql(String id){
 		return new SQL(){
 			{

@@ -85,22 +85,22 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 		}
     }
 	
-	@ApiOperation(value="更新：业务1，前台用户点赞回答，传id,ayes字段传1，其他不传；" +
-			"业务2，前台用户踩回答，传id,antis字段传1，其他不传")
-	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "updateFallback")
-    public ResponseBean<JmWisdomAnswers> update(@RequestBody JmWisdomAnswers obj) {
-    	if(StringUtils.isBlank(obj.getId())) {
-			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
-    	}
-    	JmWisdomAnswers object = service.update(obj);
-    	if(object != null) {
-			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.SUCCESS, object);
-		} else {
-			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.FAIL);
-		}
-    }
+//	@ApiOperation(value="更新：业务1，前台用户点赞回答，传id,ayes字段传1，其他不传；" +
+//			"业务2，前台用户踩回答，传id,antis字段传1，其他不传")
+//	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
+//	@RequestMapping(value = "/update", method = RequestMethod.POST)
+//	@HystrixCommand(fallbackMethod = "updateFallback")
+//    public ResponseBean<JmWisdomAnswers> update(@RequestBody JmWisdomAnswers obj) {
+//    	if(StringUtils.isBlank(obj.getId())) {
+//			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
+//    	}
+//    	JmWisdomAnswers object = service.update(obj);
+//    	if(object != null) {
+//			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.SUCCESS, object);
+//		} else {
+//			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.FAIL);
+//		}
+//    }
 	
 	@ApiOperation(value="删除：后台管理，传id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")

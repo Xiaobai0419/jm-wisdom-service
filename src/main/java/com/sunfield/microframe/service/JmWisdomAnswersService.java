@@ -3,13 +3,17 @@ package com.sunfield.microframe.service;
 import java.util.List;
 
 import com.sunfield.microframe.domain.JmAppUser;
+import com.sunfield.microframe.domain.JmWisdomQuestions;
 import com.sunfield.microframe.domain.JmWisdomUserQuestions;
 import com.sunfield.microframe.feign.JmAppUserFeignService;
+import com.sunfield.microframe.mapper.JmWisdomQuestionsMapper;
 import com.sunfield.microframe.mapper.JmWisdomUserQuestionsMapper;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.codingapi.tx.annotation.ITxTransaction;
@@ -28,6 +32,8 @@ public class JmWisdomAnswersService implements ITxTransaction{
 
 	@Autowired
 	private JmWisdomAnswersMapper mapper;
+	@Autowired
+	private JmWisdomQuestionsMapper jmWisdomQuestionsMapper;
 	@Autowired
 	private JmWisdomUserQuestionsMapper jmWisdomUserQuestionsMapper;
 	@Autowired
@@ -104,18 +110,29 @@ public class JmWisdomAnswersService implements ITxTransaction{
 		}
 		return answers;
 	}
-	
-	@Transactional
+
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
 	public JmWisdomAnswers insert(JmWisdomAnswers obj){
 		obj.preInsert();
-		if(mapper.insert(obj) > 0) {
+		int result1 = mapper.insert(obj);
+		int result2 = 0;
+		//回答对应问题的回答数+1--后台删除回答对应问题回答数-1的功能做另外接口，因后台无法传递questionId而暂未实现
+		//插入成功才+1
+		if(result1 > 0 && obj != null && StringUtils.isNotBlank(obj.getQuestionId())) {
+			JmWisdomQuestions jmWisdomQuestions = new JmWisdomQuestions();
+			jmWisdomQuestions.preUpdate();//注意更新
+			jmWisdomQuestions.setId(obj.getQuestionId());
+			jmWisdomQuestions.setAnswers(1);//表示更新回答数
+			result2 = jmWisdomQuestionsMapper.update(jmWisdomQuestions);
+		}
+		if(result1 > 0 && result2 > 0) {
 			return obj;
 		} else {
 			return null;
 		}
 	}
-	
-	@Transactional
+
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
 	public JmWisdomAnswers update(JmWisdomAnswers obj){
 		obj.preUpdate();
 		if(mapper.update(obj) > 0) {
@@ -124,8 +141,8 @@ public class JmWisdomAnswersService implements ITxTransaction{
 			return null;
 		}
 	}
-	
-	@Transactional
+
+	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)
 	public int delete(String id){
 		return mapper.delete(id);
 	}

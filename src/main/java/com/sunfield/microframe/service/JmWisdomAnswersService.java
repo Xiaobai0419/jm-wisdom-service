@@ -1,6 +1,8 @@
 package com.sunfield.microframe.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.sunfield.microframe.domain.JmAppUser;
 import com.sunfield.microframe.domain.JmWisdomQuestions;
@@ -109,6 +111,20 @@ public class JmWisdomAnswersService implements ITxTransaction{
 			answers.setVisitUserYesOrNo((result != null && result.getYesorno() != null) ? result.getYesorno() : 0);
 		}
 		return answers;
+	}
+
+	//新增接口：根据问题id数组查询问题第一条回答详情的集合
+	public Map<String,JmWisdomAnswers> findFirstAnswers(String[] questionIds){
+		Map<String,JmWisdomAnswers> answersMap = new HashMap<>();
+		if(questionIds != null && questionIds.length > 0) {
+			JmWisdomQuestions question = new JmWisdomQuestions();
+			for(String questionId : questionIds) {
+				question.setId(questionId);
+				JmWisdomAnswers answer = mapper.findFirst(question);
+				answersMap.put(questionId,answer);//问题id为key,第一条回答详情为value
+			}
+		}
+		return answersMap;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED,readOnly = false)

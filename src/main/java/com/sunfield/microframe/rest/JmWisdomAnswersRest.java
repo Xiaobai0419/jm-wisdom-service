@@ -1,6 +1,7 @@
 package com.sunfield.microframe.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
@@ -71,7 +72,22 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
     		return new ResponseBean<JmWisdomAnswers>(ResponseStatus.NO_DATA);
 		}
     }
-	
+
+	@ApiOperation(value="根据问题id数组查询第一条回答集合")
+	@ApiImplicitParam(name = "questionIds", value = "", required = true, dataType = "String", allowMultiple = true)
+	@RequestMapping(value = "/findFirstAnswers", method = RequestMethod.POST)
+	public ResponseBean<Map<String,JmWisdomAnswers>> findFirstAnswers(String[] questionIds) {
+		if(questionIds == null || questionIds.length == 0) {
+			return new ResponseBean<Map<String,JmWisdomAnswers>>(ResponseStatus.PARAMS_ERROR);
+		}
+		Map<String,JmWisdomAnswers> answersMap = service.findFirstAnswers(questionIds);
+		if(answersMap != null && answersMap.size() > 0) {
+			return new ResponseBean<Map<String,JmWisdomAnswers>>(ResponseStatus.SUCCESS, answersMap);
+		} else {
+			return new ResponseBean<Map<String,JmWisdomAnswers>>(ResponseStatus.NO_DATA);
+		}
+	}
+
 	@ApiOperation(value="新增：传递content，questionId，userId，title，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)

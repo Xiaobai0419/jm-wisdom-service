@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-
 import com.sunfield.microframe.domain.JmWisdomWebcast;
-import com.sunfield.microframe.fallback.JmWisdomWebcastFallback;
 import com.sunfield.microframe.service.JmWisdomWebcastService;
 
 /**
@@ -27,7 +24,7 @@ import com.sunfield.microframe.service.JmWisdomWebcastService;
 @Api(tags = "jm-wisdom-webcast")
 @RestController
 @RequestMapping(value = "/JmWisdomWebcast")
-public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
+public class JmWisdomWebcastRest {
 	
 	@Autowired
 	private JmWisdomWebcastService service;
@@ -35,7 +32,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="查询列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findListFallback")
     public ResponseBean<List<JmWisdomWebcast>> findList(@RequestBody JmWisdomWebcast obj) {
 		List<JmWisdomWebcast> list = service.findList(obj);
 		if(!list.isEmpty()) {
@@ -48,7 +44,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="分页查询：后台功能，传递分页信息")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findPageFallback")
     public ResponseBean<Page<JmWisdomWebcast>> findPage(@RequestBody JmWisdomWebcast obj) {
     	return new ResponseBean<Page<JmWisdomWebcast>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
@@ -56,7 +51,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="根据主键查询：传递id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findOneFallback")
     public ResponseBean<JmWisdomWebcast> findOne(@RequestBody JmWisdomWebcast obj) {
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomWebcast>(ResponseStatus.PARAMS_ERROR);
@@ -72,7 +66,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="前台功能：查询当前直播，json中不传任何参数")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/findCurrent", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findCurrentFallback")
 	public WebcastResponseBean<JmWisdomWebcast> findCurrent(@RequestBody JmWisdomWebcast obj) {
 		JmWisdomWebcast object = service.findCurrent();
 		if(object != null) {
@@ -85,7 +78,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="新增：传递title，coverUrl，webcastLink，beginTime，endTime，status1（0 启用 2禁用），开始时间不早于结束时间失败，开始时间与当前直播冲突失败")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "insertFallback")
     public WebcastResponseBean<JmWisdomWebcast> insert(@RequestBody JmWisdomWebcast obj) {
 		return service.insert(obj);
     }
@@ -93,7 +85,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="更新：传递id，title，coverUrl，webcastLink，beginTime，endTime，status1（0 启用 2禁用），开始时间不早于结束时间失败，开始时间与当前直播冲突失败")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "updateFallback")
     public WebcastResponseBean<JmWisdomWebcast> update(@RequestBody JmWisdomWebcast obj) {
     	if(StringUtils.isBlank(obj.getId())) {
 			return new WebcastResponseBean<JmWisdomWebcast>(WebcastResponseStatus.ID_NULL);
@@ -104,7 +95,6 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
 	@ApiOperation(value="删除：传递id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomWebcast")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "deleteFallback")
     public ResponseBean<JmWisdomWebcast> delete(@RequestBody JmWisdomWebcast obj) {
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomWebcast>(ResponseStatus.PARAMS_ERROR);
@@ -115,5 +105,4 @@ public class JmWisdomWebcastRest extends JmWisdomWebcastFallback{
     		return new ResponseBean<JmWisdomWebcast>(ResponseStatus.NO_DATA);
 		}
     }
-    
 }

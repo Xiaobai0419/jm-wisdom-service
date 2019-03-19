@@ -1,13 +1,13 @@
 package com.sunfield.microframe.feign;
 
 import com.sunfield.microframe.common.response.ResponseBean;
-import com.sunfield.microframe.domain.JmAppUser;
 import com.sunfield.microframe.domain.JmIndustries;
 import com.sunfield.microframe.feign.fallback.JmIndustriesFeignServiceFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -17,4 +17,10 @@ public interface JmIndustriesFeignService {
     //视自身业务需要调用其他服务的一些接口，而不是全部罗列，智库服务仅需要根据行业id显示行业名称（智库问答后台管理功能），而获取行业列表应该让前端直接调用行业类别微服务
     @RequestMapping(value = "/JmIndustries/findOne", method = RequestMethod.POST)
     ResponseBean<JmIndustries> findOne(@RequestBody JmIndustries obj);//封装的Bean如ResponseBean、JmAppUser需要与user微服务中所使用的完全一致，否则容易出现序列化错误或注入失败，建议引入统一sdk
+
+    @RequestMapping(value = "/JmIndustries/findByIds", method = RequestMethod.POST)
+    public ResponseBean<List<JmIndustries>> findByIds(@RequestParam("ids") String[] ids);
+
+    @RequestMapping(value = "/JmIndustries/findList", method = RequestMethod.POST)
+    public ResponseBean<List<JmIndustries>> findList(@RequestBody JmIndustries obj);
 }

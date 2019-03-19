@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.sunfield.microframe.common.response.Page;
 import com.sunfield.microframe.common.response.ResponseBean;
 import com.sunfield.microframe.common.response.ResponseStatus;
 
 import com.sunfield.microframe.domain.JmWisdomAnswers;
-import com.sunfield.microframe.fallback.JmWisdomAnswersFallback;
 import com.sunfield.microframe.service.JmWisdomAnswersService;
 
 /**
@@ -30,7 +28,7 @@ import com.sunfield.microframe.service.JmWisdomAnswersService;
 @Api(tags = "jm-wisdom-answers")
 @RestController
 @RequestMapping(value = "/JmWisdomAnswers")
-public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
+public class JmWisdomAnswersRest {
 	
 	@Autowired
 	private JmWisdomAnswersService service;
@@ -38,7 +36,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@ApiOperation(value="查询列表：前台功能，传questionId，visitUserId（未登录访问可不传），问题对应回答列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findList", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findListFallback")
     public ResponseBean<List<JmWisdomAnswers>> findList(@RequestBody JmWisdomAnswers obj) {
 		List<JmWisdomAnswers> list = service.findList(obj);
 		if(!list.isEmpty()) {
@@ -52,7 +49,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 			"后台管理，传递分页参数，角马问答板块所有评论列表")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findPageFallback")
     public ResponseBean<Page<JmWisdomAnswers>> findPage(@RequestBody JmWisdomAnswers obj) {
     	return new ResponseBean<Page<JmWisdomAnswers>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
@@ -60,7 +56,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@ApiOperation(value="根据主键查询：传id,visitUserId（未登录访问可不传），其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "findOneFallback")
     public ResponseBean<JmWisdomAnswers> findOne(@RequestBody JmWisdomAnswers obj) {
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
@@ -91,7 +86,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@ApiOperation(value="新增：传递content，questionId，userId，title，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "insertFallback")
     public ResponseBean<JmWisdomAnswers> insert(@RequestBody JmWisdomAnswers obj) {
 		JmWisdomAnswers object = service.insert(obj);
 		if(object != null) {
@@ -105,7 +99,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 //			"业务2，前台用户踩回答，传id,antis字段传1，其他不传")
 //	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 //	@RequestMapping(value = "/update", method = RequestMethod.POST)
-//	@HystrixCommand(fallbackMethod = "updateFallback")
 //    public ResponseBean<JmWisdomAnswers> update(@RequestBody JmWisdomAnswers obj) {
 //    	if(StringUtils.isBlank(obj.getId())) {
 //			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
@@ -121,7 +114,6 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
 	@ApiOperation(value="删除：后台管理，传id,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomAnswers")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "deleteFallback")
     public ResponseBean<JmWisdomAnswers> delete(@RequestBody JmWisdomAnswers obj) {
     	if(StringUtils.isBlank(obj.getId())) {
 			return new ResponseBean<JmWisdomAnswers>(ResponseStatus.PARAMS_ERROR);
@@ -132,5 +124,4 @@ public class JmWisdomAnswersRest extends JmWisdomAnswersFallback{
     		return new ResponseBean<JmWisdomAnswers>(ResponseStatus.NO_DATA);
 		}
     }
-    
 }

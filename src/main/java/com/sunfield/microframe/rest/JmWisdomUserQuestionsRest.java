@@ -1,9 +1,6 @@
 package com.sunfield.microframe.rest;
 
-import java.util.List;
-
 import io.swagger.annotations.Api;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.sunfield.microframe.common.response.Page;
 import com.sunfield.microframe.common.response.ResponseBean;
 import com.sunfield.microframe.common.response.ResponseStatus;
 
 import com.sunfield.microframe.domain.JmWisdomUserQuestions;
-import com.sunfield.microframe.fallback.JmWisdomUserQuestionsFallback;
 import com.sunfield.microframe.service.JmWisdomUserQuestionsService;
 
 /**
@@ -29,7 +23,7 @@ import com.sunfield.microframe.service.JmWisdomUserQuestionsService;
 @Api(tags = "jm-wisdom-user-questions")
 @RestController
 @RequestMapping(value = "/JmWisdomUserQuestions")
-public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
+public class JmWisdomUserQuestionsRest {
 	
 	@Autowired
 	private JmWisdomUserQuestionsService service;
@@ -37,7 +31,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 //	@ApiOperation(value="查询列表")
 //	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 //	@RequestMapping(value = "/findList", method = RequestMethod.POST)
-//	@HystrixCommand(fallbackMethod = "findListFallback")
 //    public ResponseBean<List<JmWisdomUserQuestions>> findList(@RequestBody JmWisdomUserQuestions obj) {
 //		List<JmWisdomUserQuestions> list = service.findList(obj);
 //		if(!list.isEmpty()) {
@@ -50,7 +43,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 //	@ApiOperation(value="分页查询")
 //	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 //	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
-//	@HystrixCommand(fallbackMethod = "findPageFallback")
 //    public ResponseBean<Page<JmWisdomUserQuestions>> findPage(@RequestBody JmWisdomUserQuestions obj) {
 //    	return new ResponseBean<Page<JmWisdomUserQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
 //    }
@@ -59,7 +51,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 //			"其他不传，无数据返回代表用户对该对象没有任何赞、踩、收藏")
 //	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 //	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
-//	@HystrixCommand(fallbackMethod = "findOneFallback")
 //    public ResponseBean<JmWisdomUserQuestions> findOne(@RequestBody JmWisdomUserQuestions obj) {
 //    	JmWisdomUserQuestions object = service.findOne(obj);
 //    	if(object != null) {
@@ -75,7 +66,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 			"角马访谈视频点赞，type传4。用户取消赞、踩、收藏请访问删除接口。用户没有任何赞、踩、收藏请不要调用。")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "insertFallback")
     public ResponseBean<JmWisdomUserQuestions> insert(@RequestBody JmWisdomUserQuestions obj) {
 		JmWisdomUserQuestions object = service.insert(obj);
 		if(object != null) {
@@ -89,7 +79,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 //	@ApiOperation(value="更新")
 //	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 //	@RequestMapping(value = "/update", method = RequestMethod.POST)
-//	@HystrixCommand(fallbackMethod = "updateFallback")
 //    public ResponseBean<JmWisdomUserQuestions> update(@RequestBody JmWisdomUserQuestions obj) {
 //    	if(StringUtils.isBlank(obj.getId())) {
 //			return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.PARAMS_ERROR);
@@ -108,7 +97,6 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
 			"角马访谈视频点赞，type传4。")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomUserQuestions")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	@HystrixCommand(fallbackMethod = "deleteFallback")
     public ResponseBean<JmWisdomUserQuestions> delete(@RequestBody JmWisdomUserQuestions obj) {
     	if(service.delete(obj) > 0) {
     		return new ResponseBean<JmWisdomUserQuestions>();
@@ -116,5 +104,4 @@ public class JmWisdomUserQuestionsRest extends JmWisdomUserQuestionsFallback{
     		return new ResponseBean<JmWisdomUserQuestions>(ResponseStatus.NO_DATA);
 		}
     }
-    
 }

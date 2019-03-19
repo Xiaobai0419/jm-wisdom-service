@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sunfield.microframe.common.utils.CacheUtils;
 import com.sunfield.microframe.domain.JmAppUser;
 import com.sunfield.microframe.domain.JmWisdomQuestions;
 import com.sunfield.microframe.domain.JmWisdomUserQuestions;
@@ -41,7 +42,10 @@ public class JmWisdomAnswersService implements ITxTransaction{
 	@Autowired
 	@Qualifier("jmAppUserFeignService")
 	private JmAppUserFeignService jmAppUserFeignService;
+	@Autowired
+	private CacheUtils cacheUtils;
 
+	//实时查最新，不能缓存
 	private JmAppUser findUser(String userId) {
 		return jmAppUserFeignService.findOne(userId).getData();
 	}
@@ -52,7 +56,12 @@ public class JmWisdomAnswersService implements ITxTransaction{
 			JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
 			for(JmWisdomAnswers answers : list) {
 				if(answers != null && StringUtils.isNotBlank(answers.getUserId())) {
-					JmAppUser user = findUser(answers.getUserId());
+					JmAppUser user = null;
+					user = cacheUtils.getUserCache().get(answers.getUserId());//Map传入空key会报空指针
+					//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
+					if(user == null) {
+						user = findUser(answers.getUserId());
+					}
 					answers.setUser(user);
 				}
 				//新增查询：访问用户对该回答的踩赞状态
@@ -76,7 +85,12 @@ public class JmWisdomAnswersService implements ITxTransaction{
 				JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
 				for(JmWisdomAnswers answers : pageList) {
 					if(answers != null && StringUtils.isNotBlank(answers.getUserId())) {
-						JmAppUser user = findUser(answers.getUserId());
+						JmAppUser user = null;
+						user = cacheUtils.getUserCache().get(answers.getUserId());//Map传入空key会报空指针
+						//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
+						if(user == null) {
+							user = findUser(answers.getUserId());
+						}
 						answers.setUser(user);
 					}
 					//新增查询：访问用户对该回答的踩赞状态
@@ -97,8 +111,13 @@ public class JmWisdomAnswersService implements ITxTransaction{
 	
 	public JmWisdomAnswers findOne(JmWisdomAnswers jmWisdomAnswers){
 		JmWisdomAnswers answers = mapper.findOne(jmWisdomAnswers.getId());
-		if(answers != null && answers.getUserId() != null) {
-			JmAppUser user = findUser(answers.getUserId());
+		if(answers != null && StringUtils.isNotBlank(answers.getUserId()) ) {
+			JmAppUser user = null;
+			user = cacheUtils.getUserCache().get(answers.getUserId());//Map传入空key会报空指针
+			//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
+			if(user == null) {
+				user = findUser(answers.getUserId());
+			}
 			answers.setUser(user);
 		}
 		JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();

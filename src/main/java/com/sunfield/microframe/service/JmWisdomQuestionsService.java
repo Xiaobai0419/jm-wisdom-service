@@ -1,8 +1,8 @@
 package com.sunfield.microframe.service;
 
 import java.util.List;
-import java.util.concurrent.*;
 
+import com.sunfield.microframe.common.utils.CacheUtils;
 import com.sunfield.microframe.domain.*;
 import com.sunfield.microframe.feign.JmAppUserFeignService;
 import com.sunfield.microframe.feign.JmIndustriesFeignService;
@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,44 +41,8 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 	@Autowired
 	@Qualifier("jmIndustriesFeignService")
 	private JmIndustriesFeignService jmIndustriesFeignService;
-
-	//应用层缓存--用户量大的情形下要移除到Redis集群中，防止应用层内存溢出;每次从Redis获取数据（但又变成了网络连接）;使用单独定时任务工程查询所有用户更新到Redis缓存
-	private ConcurrentMap<String,JmAppUser> userCache = new ConcurrentHashMap<>();
-	private ConcurrentMap<String,JmIndustries> industriesCache = new ConcurrentHashMap<>();
-
-	public ConcurrentMap<String, JmAppUser> getUserCache() {
-		return userCache;
-	}
-
-	public ConcurrentMap<String, JmIndustries> getIndustriesCache() {
-		return industriesCache;
-	}
-
-	//定时任务定期查询数据更新应用层缓存，用于一定时间后重新获取新数据--这时保证单例和单例实例化的同步操作就非常有必要
-	public JmWisdomQuestionsService() {
-		Executors.newSingleThreadScheduledExecutor().scheduleWithFixedDelay(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					List<JmAppUser> users = findUsers();//远程调用有超时、熔断设置，且这里是另起一个线程异步，不用担心因容器初始化Bean未完成导致的服务长期起不来
-					List<JmIndustries> industries = findIndustries();
-					if(users != null && users.size() > 0) {
-						for(JmAppUser user : users) {
-							userCache.put(user.getId(),user);//无论是否并发，操作ConcurrentMap是安全的，能不同步尽量不同步，无论整体存入是否完成，数据获取者只是并发获取其中的一些数据而已，上一次有旧数据未被覆盖，可用，如果没有，降级，自己去远程调用
-						}
-					}
-					if(industries != null && industries.size() > 0) {
-						for(JmIndustries jmIndustries : industries) {
-							industriesCache.put(jmIndustries.getId(),jmIndustries);
-						}
-					}
-					log.info(Thread.currentThread().getName() + "->userCache and industryCache updated!");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		},2000,20000, TimeUnit.MILLISECONDS);
-	}
+	@Autowired
+	private CacheUtils cacheUtils;
 
 	//实时查最新，不能缓存
 	private JmAppUser findUser(String userId) {
@@ -89,18 +52,6 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 	//实时查最新，不能缓存
 	private JmIndustries findIndustry(JmIndustries industry) {
 		return jmIndustriesFeignService.findOne(industry).getData();
-	}
-
-	//缓存所有用户--改为定时任务查询最新存入应用层缓存，这里要最新数据，不能缓存
-//	@Cacheable(value = "jm_wisdom_user_cache",key = "'jm_wisdom_user_cache'")
-	public List<JmAppUser> findUsers() {
-		return jmAppUserFeignService.findList().getData();
-	}
-
-	//缓存所有行业--改为定时任务查询最新存入应用层缓存，这里要最新数据，不能缓存
-//	@Cacheable(value = "jm_wisdom_industry_cache",key = "'jm_wisdom_industry_cache'")
-	public List<JmIndustries> findIndustries() {
-		return jmIndustriesFeignService.findList(new JmIndustries()).getData();
 	}
 
 	public List<JmWisdomQuestions> findList(JmWisdomQuestions obj){
@@ -130,7 +81,7 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 					}
 					JmAppUser user = null;
 					if(StringUtils.isNotBlank(jmWisdomQuestions.getUserId())) {
-						user = userCache.get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
+						user = cacheUtils.getUserCache().get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
 						//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
 						if(user == null) {
 							user = findUser(jmWisdomQuestions.getUserId());
@@ -139,7 +90,7 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 					jmWisdomQuestions.setUser(user);
 					JmIndustries industries = null;
 					if(StringUtils.isNotBlank(jmWisdomQuestions.getIndustryId())) {
-						industries = industriesCache.get(jmWisdomQuestions.getIndustryId());
+						industries = cacheUtils.getIndustriesCache().get(jmWisdomQuestions.getIndustryId());
 						if(industries == null) {
 							JmIndustries industriesInput =new JmIndustries();
 							industriesInput.setId(jmWisdomQuestions.getIndustryId());
@@ -158,7 +109,7 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 	public JmWisdomQuestions findOne(JmWisdomQuestions questions){
 		JmWisdomQuestions jmWisdomQuestions = mapper.findOne(questions.getId());
 		if(jmWisdomQuestions != null && StringUtils.isNotBlank(jmWisdomQuestions.getUserId())) {
-			JmAppUser user = userCache.get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
+			JmAppUser user = cacheUtils.getUserCache().get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
 			//如果缓存没有，降级去远程调用
 			if(user == null) {
 				user = findUser(jmWisdomQuestions.getUserId());
@@ -166,7 +117,7 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 			jmWisdomQuestions.setUser(user);
 		}
 		if(jmWisdomQuestions != null && StringUtils.isNotBlank(jmWisdomQuestions.getIndustryId())) {
-			JmIndustries industries = industriesCache.get(jmWisdomQuestions.getIndustryId());
+			JmIndustries industries = cacheUtils.getIndustriesCache().get(jmWisdomQuestions.getIndustryId());
 			if(industries == null) {
 				JmIndustries industriesInput =new JmIndustries();
 				industriesInput.setId(jmWisdomQuestions.getIndustryId());

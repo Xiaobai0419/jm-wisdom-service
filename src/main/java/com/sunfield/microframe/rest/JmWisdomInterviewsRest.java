@@ -2,6 +2,8 @@ package com.sunfield.microframe.rest;
 
 import java.util.List;
 
+import com.sunfield.microframe.domain.JmWisdomUserQuestions;
+import com.sunfield.microframe.service.JmWisdomUserQuestionsService;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,9 @@ public class JmWisdomInterviewsRest {
 	
 	@Autowired
 	private JmWisdomInterviewsService service;
-	
+	@Autowired
+	private JmWisdomUserQuestionsService jmWisdomUserQuestionsService;
+
 	@ApiOperation(value="查询列表：业务1：前台功能，访谈首页列表，按推荐排序，selectOrder字段传1，其他不传；" +
 			"业务2：前台功能，视频首页访谈列表，按视频板块推荐排序，videoSelectOrder字段传1，其他不传；" +
 			"业务3：前台功能，访谈更多列表页，按上传时间倒序，json不传任何字段" +
@@ -46,14 +50,33 @@ public class JmWisdomInterviewsRest {
 			return new ResponseBean<List<JmWisdomInterviews>>(ResponseStatus.NO_DATA);
 		}
     }
-	
+
+	@ApiOperation(value="查询列表：个人收藏的访谈，userId：登录用户id；type：传固定值3，代表类型为访谈")
+	@ApiImplicitParam(name = "jmWisdomUserQuestions", value = "", required = true, dataType = "JmWisdomUserQuestions")
+	@RequestMapping(value = "/findOnesList", method = RequestMethod.POST)
+	public ResponseBean<List<JmWisdomInterviews>> findOnesList(@RequestBody JmWisdomUserQuestions jmWisdomUserQuestions) {
+		List<JmWisdomInterviews> list = jmWisdomUserQuestionsService.findOnesInterviewsList(jmWisdomUserQuestions);
+		if(!list.isEmpty()) {
+			return new ResponseBean<List<JmWisdomInterviews>>(ResponseStatus.SUCCESS, list);
+		} else {
+			return new ResponseBean<List<JmWisdomInterviews>>(ResponseStatus.NO_DATA);
+		}
+	}
+
 	@ApiOperation(value="分页查询：后台功能，传递分页信息")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomInterviews")
 	@RequestMapping(value = "/findPage", method = RequestMethod.POST)
     public ResponseBean<Page<JmWisdomInterviews>> findPage(@RequestBody JmWisdomInterviews obj) {
     	return new ResponseBean<Page<JmWisdomInterviews>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
-	
+
+	@ApiOperation(value="分页查询：个人收藏的访谈，userId：登录用户id；type：传固定值3，代表类型为访谈")
+	@ApiImplicitParam(name = "jmWisdomUserQuestions", value = "", required = true, dataType = "JmWisdomUserQuestions")
+	@RequestMapping(value = "/findOnesPage", method = RequestMethod.POST)
+	public ResponseBean<Page<JmWisdomInterviews>> findOnesPage(@RequestBody JmWisdomUserQuestions jmWisdomUserQuestions) {
+		return new ResponseBean<Page<JmWisdomInterviews>>(ResponseStatus.SUCCESS, jmWisdomUserQuestionsService.findOnesInterviewsPage(jmWisdomUserQuestions));
+	}
+
 	@ApiOperation(value="根据主键查询：传递id，visitUserId（未登录访问可不传）字段，其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomInterviews")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)

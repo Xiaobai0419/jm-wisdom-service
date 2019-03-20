@@ -23,7 +23,23 @@ public class JmWisdomUserQuestionsSqlProvider{
  									" update_by AS updateBy,"+
  									" update_date AS updateDate,"+
  									" remarks AS remarks";
- 
+
+ 	public String generateFindCountSql(JmWisdomUserQuestions obj) {
+		return new SQL() {
+			{
+				SELECT("count(1)");
+				FROM("jm_wisdom_user_questions");
+				WHERE("status = '0'");
+
+				//收藏的访谈列表
+				if(StringUtils.isNotBlank(obj.getUserId()) && obj.getType() != null) {
+					WHERE("user_id = #{userId}");
+					WHERE("type = #{type}");
+				}
+			}
+		}.toString();
+	}
+
  	public String generateFindListSql(JmWisdomUserQuestions obj){
 		return new SQL(){
 			{
@@ -31,8 +47,14 @@ public class JmWisdomUserQuestionsSqlProvider{
 				FROM("jm_wisdom_user_questions");
 				
 				WHERE("status = '0'");
-				
-				
+
+				//收藏的访谈列表
+				if(StringUtils.isNotBlank(obj.getUserId()) && obj.getType() != null) {
+					WHERE("user_id = #{userId}");
+					WHERE("type = #{type}");
+				}
+
+				ORDER_BY("update_date desc");//时间倒序
 				
 			}
 		}.toString();

@@ -1,7 +1,9 @@
 package com.sunfield.microframe.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.sunfield.microframe.common.utils.PageUtils;
 import com.sunfield.microframe.domain.*;
 import com.sunfield.microframe.mapper.*;
 import org.apache.commons.lang.StringUtils;
@@ -219,5 +221,39 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 			}
 		}
 		return (result1 > 0 && result2 > 0) ? 1:0;
+	}
+
+	//个人收藏的访谈列表
+	public List<JmWisdomInterviews> findOnesInterviewsList(JmWisdomUserQuestions jmWisdomUserQuestions) {
+		//类型3为访谈
+		if(StringUtils.isNotBlank(jmWisdomUserQuestions.getUserId()) && jmWisdomUserQuestions.getType() == 3) {
+			List<JmWisdomUserQuestions> userQuestions = mapper.findList(jmWisdomUserQuestions);
+			if(userQuestions != null && userQuestions.size() > 0) {
+				List<String> interviewIds = new ArrayList<>();
+				for(JmWisdomUserQuestions userQuestion : userQuestions) {
+					interviewIds.add(userQuestion.getQuestionId());
+				}
+				List<JmWisdomInterviews> interviews = jmWisdomInterviewsMapper.findListByIds(interviewIds.toArray(new String[interviewIds.size()]));
+				return interviews;
+			}
+		}
+		return new ArrayList<>();//避免返回null
+	}
+
+	//个人收藏的访谈列表--分页
+	public Page<JmWisdomInterviews> findOnesInterviewsPage(JmWisdomUserQuestions jmWisdomUserQuestions) {
+		//类型3为访谈
+		int count = 0;
+		if(StringUtils.isNotBlank(jmWisdomUserQuestions.getUserId()) && jmWisdomUserQuestions.getType() == 3) {
+			List<JmWisdomInterviews> onesInterviews = findOnesInterviewsList(jmWisdomUserQuestions);
+			count = onesInterviews.size();//应为该用户收藏的访谈表中实际存在的访谈数目
+			if(count > 0) {
+				//按该用户收藏的访谈表中实际存在的访谈，在应用层分页
+				return PageUtils.pageList(onesInterviews,jmWisdomUserQuestions.getPageNumber(),
+						jmWisdomUserQuestions.getPageSize());
+			}
+		}
+		return new Page<>(count, jmWisdomUserQuestions.getPageSize(),
+				jmWisdomUserQuestions.getPageNumber(),new ArrayList<>());//避免返回null
 	}
 }

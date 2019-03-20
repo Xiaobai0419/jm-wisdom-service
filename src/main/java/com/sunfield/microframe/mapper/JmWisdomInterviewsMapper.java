@@ -2,10 +2,7 @@ package com.sunfield.microframe.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 
 import com.sunfield.microframe.domain.JmWisdomInterviews;
 import com.sunfield.microframe.provider.JmWisdomInterviewsSqlProvider;
@@ -24,6 +21,14 @@ public interface JmWisdomInterviewsMapper{
 	 */
 	@SelectProvider(type=JmWisdomInterviewsSqlProvider.class, method="generateFindListSql")
 	public List<JmWisdomInterviews> findList(JmWisdomInterviews obj);
+
+	/**
+	 * 按id批量查询
+	 * @param ids
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomInterviewsSqlProvider.class, method="generateFindListByIdsSql")
+	public List<JmWisdomInterviews> findListByIds(@Param("ids") String[] ids);
 
 	/**
 	 * 分页查询

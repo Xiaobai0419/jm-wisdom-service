@@ -18,6 +18,14 @@ import com.sunfield.microframe.provider.JmWisdomUserQuestionsSqlProvider;
 public interface JmWisdomUserQuestionsMapper{
 
 	/**
+	 * 数目查询
+	 * @param obj
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomUserQuestionsSqlProvider.class, method="generateFindCountSql")
+	public int findCount(JmWisdomUserQuestions obj);
+
+	/**
 	 * 列表查询
 	 * @param obj
 	 * @return

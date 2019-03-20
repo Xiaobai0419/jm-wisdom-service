@@ -1,9 +1,11 @@
 package com.sunfield.microframe.provider;
 
-import org.apache.commons.lang.StringUtils;
+import com.sunfield.microframe.common.utils.SqlUtils;
 import org.apache.ibatis.jdbc.SQL;
 
 import com.sunfield.microframe.domain.JmWisdomInterviews;
+
+import static com.sunfield.microframe.common.utils.SqlUtils.inSql;
 
 /**
  * jm_wisdom_interviews sql provider
@@ -52,7 +54,23 @@ public class JmWisdomInterviewsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	public String generateFindListByIdsSql(String[] ids){
+		return new SQL(){
+			{
+				SELECT(COLUMNS);
+				FROM("jm_wisdom_interviews");
+
+				WHERE("status = '0'");
+
+				if(ids != null && ids.length > 0) {
+					String inSql = inSql("id", SqlUtils.ColumnType.VARCHAR,ids);
+					WHERE(inSql);
+				}
+			}
+		}.toString();
+	}
+
 	public String generateFindPageSql(JmWisdomInterviews obj){
 		StringBuilder sql = new StringBuilder(generateFindListSql(obj));
 		sql.append(" LIMIT ");

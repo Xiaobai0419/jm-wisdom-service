@@ -30,7 +30,8 @@ public interface JmWisdomQuestionsMapper{
 	 */
 	@SelectProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateFindByUserIdsSql")
 	public List<JmWisdomQuestions> findByUserIds(String[] userIds, @Param("dateStart") Date dateStart,
-												 @Param("dateEnd") Date dateEnd);
+												 @Param("dateEnd") Date dateEnd,
+												 @Param("industryId") String industryId,Integer selectOrder);
 
 	/**
 	 * 分页查询
@@ -50,6 +51,7 @@ public interface JmWisdomQuestionsMapper{
 	@SelectProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateFindByUserIdsPageSql")
 	public List<JmWisdomQuestions> findByUserIdsPage(String[] userIds, @Param("dateStart") Date dateStart,
 													 @Param("dateEnd") Date dateEnd,
+													 @Param("industryId") String industryId,Integer selectOrder,
 													 Integer pageNumber, Integer pageSize);
 
 	/**

@@ -40,23 +40,40 @@ public class JmWisdomQuestionsSqlProvider{
 				FROM("jm_wisdom_questions");
 				
 				WHERE("status = '0'");
+
+				if(obj.getUserIdList() != null && obj.getUserIdList().size() > 0) {
+					String inSql = SqlUtils.inSql("user_id", SqlUtils.ColumnType.VARCHAR,
+							obj.getUserIdList().toArray(new String[obj.getUserIdList().size()]));
+					WHERE(inSql);
+				}
+
+				if(obj.getDateStart() != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(obj.getDateEnd() != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+
 				//按行业分类列表，日期（按天）/赞数综合排序，可集成分页，独立操作
 				//修改：以精确时间为第三序，让同一天中相同赞数的按时间倒序排列
 				if(StringUtils.isNotBlank(obj.getIndustryId())){
 					WHERE("industry_id = #{industryId}");
-					ORDER_BY("date(create_date) desc,ayes desc,create_date desc");//使用函数会拖累性能，后期根据需要优化
 				}
 				//按精品排序列表，独立操作
 				if(obj.getSelectOrder() != null && obj.getSelectOrder() == 1){
 					WHERE("select_order is not null");
 					ORDER_BY("select_order");
+				}else if(obj.getSelectOrder() != null && obj.getSelectOrder() == 2){//非精品的，后台
+					WHERE("select_order is null");
 				}
-				
+				ORDER_BY("date(update_date) desc,ayes desc,update_date desc");//使用函数会拖累性能，后期根据需要优化
 			}
 		}.toString();
 	}
 
-	public String generateFindByUserIdsSql(String[] userIds, Date dateStart, Date dateEnd){
+	public String generateFindByUserIdsSql(String[] userIds, Date dateStart, Date dateEnd,
+										   String industryId,Integer selectOrder){
 		return new SQL(){
 			{
 				SELECT(COLUMNS);
@@ -76,6 +93,18 @@ public class JmWisdomQuestionsSqlProvider{
 				if(dateEnd != null) {
 					WHERE("update_date <= #{dateEnd}");
 				}
+
+				if(StringUtils.isNotBlank(industryId)){
+					WHERE("industry_id = #{industryId}");
+				}
+				//按精品排序列表，独立操作
+				if(selectOrder != null && selectOrder == 1){
+					WHERE("select_order is not null");
+					ORDER_BY("select_order");
+				}else if(selectOrder != null && selectOrder == 2){//非精品的，后台
+					WHERE("select_order is null");
+				}
+				ORDER_BY("date(update_date) desc,ayes desc,update_date desc");//使用函数会拖累性能，后期根据需要优化
 			}
 		}.toString();
 	}
@@ -90,8 +119,8 @@ public class JmWisdomQuestionsSqlProvider{
 	}
 
 	public String generateFindByUserIdsPageSql(String[] userIds, Date dateStart, Date dateEnd,
-											   Integer pageNumber, Integer pageSize){
-		StringBuilder sql = new StringBuilder(generateFindByUserIdsSql(userIds,dateStart, dateEnd));
+											   String industryId,Integer selectOrder,Integer pageNumber, Integer pageSize){
+		StringBuilder sql = new StringBuilder(generateFindByUserIdsSql(userIds,dateStart, dateEnd,industryId,selectOrder));
 		sql.append(" LIMIT ");
 		sql.append((pageNumber - 1) * pageSize);
 		sql.append(", ");

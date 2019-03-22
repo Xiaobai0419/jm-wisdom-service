@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ee584b4-248c-4001-8f9f-fd8e9950f06f" name="Default Changelist" comment="提交用户收藏的访谈列表、分页接口.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/utils/DateConverterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commons/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../commons/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../commons/commons.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java" afterDir="false" />
@@ -98,32 +95,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="119" />
-          <entry key="java" value="707" />
+          <entry key="class" value="121" />
+          <entry key="java" value="715" />
           <entry key="properties" value="27" />
           <entry key="xml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="119" />
-          <entry key="JAVA" value="707" />
+          <entry key="CLASS" value="121" />
+          <entry key="JAVA" value="715" />
           <entry key="Properties" value="27" />
           <entry key="XML" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="11971" />
+          <entry key="java" value="12142" />
           <entry key="properties" value="6" />
-          <entry key="txt" value="1084" />
+          <entry key="txt" value="1126" />
           <entry key="xml" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11971" />
-          <entry key="PLAIN_TEXT" value="1084" />
+          <entry key="JAVA" value="12142" />
+          <entry key="PLAIN_TEXT" value="1126" />
           <entry key="Properties" value="6" />
           <entry key="XML" value="71" />
         </counts>
@@ -135,11 +132,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="123" column="25" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="25" />
+            <state relative-caret-position="325">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+            <state relative-caret-position="171">
+              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -159,8 +156,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="308">
+              <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="63" column="25" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1684#1685#0" expanded="true" />
+                <element signature="e#1706#1707#0" expanded="true" />
+                <element signature="e#1757#1758#0" expanded="true" />
+                <element signature="e#1788#1789#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,8 +181,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+            <state relative-caret-position="374">
+              <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-968">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/DateUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -210,8 +241,11 @@
       <replace>WebcastResponseStatus</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/heads/master" />
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../commons" />
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="2e418a9c-2bdb-448c-abe3-429381b9f179" />
@@ -219,7 +253,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/ServiceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/response/ResponseBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/domain/JmAppUser.java" />
@@ -266,10 +299,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/config/ApolloConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/common/utils/DateConverterConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java" />
       </list>
     </option>
   </component>
@@ -336,6 +370,64 @@
       <pane id="ProjectPane">
         <subPane>
           <expand>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microframe" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="jm-wisdom-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="jm-wisdom-service" type="462c0819:PsiDirectoryNode" />
@@ -492,8 +584,8 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553220771049" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jm-user-service" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553241393741" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jm-management" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -672,7 +764,7 @@
       <workItem from="1553141899526" duration="755000" />
       <workItem from="1553142902368" duration="31000" />
       <workItem from="1553214408242" duration="6304000" />
-      <workItem from="1553221373012" duration="2079000" />
+      <workItem from="1553221373012" duration="12800000" />
     </task>
     <task id="LOCAL-00001" summary="集成Apollo配置中心.">
       <created>1548999996597</created>
@@ -877,11 +969,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553059394977</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="提交问题多条件搜索接口，提交接收时间字符串转日期转换类.">
+      <created>1553224287704</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1553224287704</updated>
+    </task>
+    <task id="LOCAL-00031" summary="新增字段，扩展自后台查询.">
+      <created>1553241269736</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1553241269736</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="325571000" />
+    <option name="totallyTimeSpent" value="336292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -906,16 +1012,16 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.2426869" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.28277355" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.28277355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Spring" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.4989339" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.20585048" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.44203684" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1008,8 +1114,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修正Apollo依赖版本为1.2.0" />
-    <MESSAGE value="修改智库服务名称、相关Apollo项目配置、测试类" />
     <MESSAGE value="添加生成代码;按阿里规约修改了一些不规范的代码行为" />
     <MESSAGE value="修改common中的Date格式化类的日期格式为正确的格式;修改生成代码，使用条件sql拼接的方式完成角马问答业务;Swagger新增业务接口传参说明." />
     <MESSAGE value="完成用户服务Feign调用;修改同步Swagger2版本解决与Feign冲突、页面Bug问题;同步用户服务相关代码更新等." />
@@ -1033,7 +1137,9 @@
     <MESSAGE value="添加lombok、日志;优化用户、行业信息获取到应用层缓存;进行非空判断." />
     <MESSAGE value="将缓存单独拿出来作为单例进行定时更新，供所有服务使用;增加Redis缓存方式." />
     <MESSAGE value="提交用户收藏的访谈列表、分页接口." />
-    <option name="LAST_COMMIT_MESSAGE" value="提交用户收藏的访谈列表、分页接口." />
+    <MESSAGE value="提交问题多条件搜索接口，提交接收时间字符串转日期转换类." />
+    <MESSAGE value="新增字段，扩展自后台查询." />
+    <option name="LAST_COMMIT_MESSAGE" value="新增字段，扩展自后台查询." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1070,13 +1176,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java</url>
-          <line>59</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java</url>
-          <line>111</line>
+          <line>112</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -1107,20 +1207,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomVideosRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomWebcastRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/localRepo/org/springframework/spring-context/4.3.14.RELEASE/spring-context-4.3.14.RELEASE.jar!/org/springframework/stereotype/Service.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1196,13 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/localRepo/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/jdbc/AbstractSQL.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1363,20 +1442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-704">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1398,6 +1463,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="873">
           <caret line="55" column="33" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1415,13 +1483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/response/Page.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1429,33 +1490,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/localRepo/org/springframework/spring-core/4.3.14.RELEASE/spring-core-4.3.14.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+          <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
+    <entry file="jar://E:/localRepo/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/jdbc/AbstractSQL.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="418">
+          <caret line="120" column="29" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/mapper/JmWisdomQuestionsMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="171">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/base/BaseDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-968">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/common/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/localRepo/org/springframework/spring-core/4.3.14.RELEASE/spring-core-4.3.14.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/rest/JmWisdomQuestionsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/provider/JmWisdomQuestionsSqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="59" column="63" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sunfield/microframe/service/JmWisdomQuestionsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="123" column="25" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="25" />
+        <state relative-caret-position="325">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/sunfield/microframe/domain/JmWisdomQuestions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="63" column="25" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1684#1685#0" expanded="true" />
+            <element signature="e#1706#1707#0" expanded="true" />
+            <element signature="e#1757#1758#0" expanded="true" />
+            <element signature="e#1788#1789#0" expanded="true" />
           </folding>
         </state>
       </provider>

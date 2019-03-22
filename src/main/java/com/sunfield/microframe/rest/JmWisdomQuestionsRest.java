@@ -63,14 +63,17 @@ public class JmWisdomQuestionsRest {
 			@ApiImplicitParam(name = "userIds", value = "", required = false, dataType = "String", allowMultiple = true),
 			@ApiImplicitParam(name = "dateStart", value = "", required = false, dataType = "Date"),
 			@ApiImplicitParam(name = "dateEnd", value = "", required = false, dataType = "Date"),
+			@ApiImplicitParam(name = "industryId", value = "", required = false, dataType = "String"),
+			@ApiImplicitParam(name = "selectOrder", value = "", required = false, dataType = "int"),
 			@ApiImplicitParam(name = "pageNumber", value = "", required = true, dataType = "int"),
 			@ApiImplicitParam(name = "pageSize", value = "", required = true, dataType = "int")
 	})
 	@RequestMapping(value = "/findSearchedPage", method = RequestMethod.POST)
 	public ResponseBean<Page<JmWisdomQuestions>> findPage(String[] userIds,Date dateStart,Date dateEnd,
+														  String industryId,Integer selectOrder,
 														  int pageNumber, int pageSize) {
 		return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS,service
-				.findByUserIdsPage(userIds, dateStart, dateEnd,
+				.findByUserIdsPage(userIds, dateStart, dateEnd,industryId,selectOrder,
 						pageNumber, pageSize));
 	}
 

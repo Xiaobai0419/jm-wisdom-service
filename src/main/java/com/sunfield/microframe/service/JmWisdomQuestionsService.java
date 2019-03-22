@@ -108,10 +108,12 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 	}
 
 	public Page<JmWisdomQuestions> findByUserIdsPage(String[] userIds, Date dateStart, Date dateEnd,
+													 String industryId,Integer selectOrder,
 													 Integer pageNumber, Integer pageSize){
-		List<JmWisdomQuestions> totalList = mapper.findByUserIds(userIds,dateStart, dateEnd);
+		List<JmWisdomQuestions> totalList = mapper.findByUserIds(userIds,dateStart, dateEnd,industryId,selectOrder);
 		if(!totalList.isEmpty()){
-			List<JmWisdomQuestions> pageList = mapper.findByUserIdsPage(userIds, dateStart, dateEnd,pageNumber, pageSize);
+			List<JmWisdomQuestions> pageList = mapper.findByUserIdsPage(userIds, dateStart, dateEnd,industryId,selectOrder,
+					pageNumber, pageSize);
 			if(pageList != null && pageList.size() > 0) {
 				JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
 				for(JmWisdomQuestions jmWisdomQuestions : pageList) {

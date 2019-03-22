@@ -1,5 +1,6 @@
 package com.sunfield.microframe.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.sunfield.microframe.common.utils.CacheUtils;
@@ -58,7 +59,7 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 		//目前前台精品排序不需要用户相关信息，只有详情页需要，需要时添加用户信息获取代码即可
 		return mapper.findList(obj);
 	}
-	
+
 	public Page<JmWisdomQuestions> findPage(JmWisdomQuestions obj){
 		List<JmWisdomQuestions> totalList = mapper.findList(obj);
 		if(!totalList.isEmpty()){
@@ -105,7 +106,42 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 			return new Page<JmWisdomQuestions>();
 		}
 	}
-	
+
+	public Page<JmWisdomQuestions> findByUserIdsPage(String[] userIds, Date dateStart, Date dateEnd,
+													 Integer pageNumber, Integer pageSize){
+		List<JmWisdomQuestions> totalList = mapper.findByUserIds(userIds,dateStart, dateEnd);
+		if(!totalList.isEmpty()){
+			List<JmWisdomQuestions> pageList = mapper.findByUserIdsPage(userIds, dateStart, dateEnd,pageNumber, pageSize);
+			if(pageList != null && pageList.size() > 0) {
+				JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
+				for(JmWisdomQuestions jmWisdomQuestions : pageList) {
+					JmAppUser user = null;
+					if(StringUtils.isNotBlank(jmWisdomQuestions.getUserId())) {
+						user = cacheUtils.getUserCache().get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
+						//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
+						if(user == null) {
+							user = findUser(jmWisdomQuestions.getUserId());
+						}
+					}
+					jmWisdomQuestions.setUser(user);
+					JmIndustries industries = null;
+					if(StringUtils.isNotBlank(jmWisdomQuestions.getIndustryId())) {
+						industries = cacheUtils.getIndustriesCache().get(jmWisdomQuestions.getIndustryId());
+						if(industries == null) {
+							JmIndustries industriesInput =new JmIndustries();
+							industriesInput.setId(jmWisdomQuestions.getIndustryId());
+							industries = findIndustry(industriesInput);
+						}
+					}
+					jmWisdomQuestions.setIndustry(industries);
+				}
+			}
+			return new Page<JmWisdomQuestions>(totalList.size(), pageSize, pageNumber, pageList);
+		}else{
+			return new Page<JmWisdomQuestions>();
+		}
+	}
+
 	public JmWisdomQuestions findOne(JmWisdomQuestions questions){
 		JmWisdomQuestions jmWisdomQuestions = mapper.findOne(questions.getId());
 		if(jmWisdomQuestions != null && StringUtils.isNotBlank(jmWisdomQuestions.getUserId())) {

@@ -1,11 +1,9 @@
 package com.sunfield.microframe.mapper;
 
+import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 
 import com.sunfield.microframe.domain.JmWisdomQuestions;
 import com.sunfield.microframe.provider.JmWisdomQuestionsSqlProvider;
@@ -26,12 +24,33 @@ public interface JmWisdomQuestionsMapper{
 	public List<JmWisdomQuestions> findList(JmWisdomQuestions obj);
 
 	/**
+	 * 列表查询--用户id批量
+	 * @param userIds
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateFindByUserIdsSql")
+	public List<JmWisdomQuestions> findByUserIds(String[] userIds, @Param("dateStart") Date dateStart,
+												 @Param("dateEnd") Date dateEnd);
+
+	/**
 	 * 分页查询
 	 * @param obj
 	 * @return
 	 */
 	@SelectProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateFindPageSql")
 	public List<JmWisdomQuestions> findPage(JmWisdomQuestions obj);
+
+	/**
+	 * 分页查询--用户id批量
+	 * @param userIds
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return
+	 */
+	@SelectProvider(type=JmWisdomQuestionsSqlProvider.class, method="generateFindByUserIdsPageSql")
+	public List<JmWisdomQuestions> findByUserIdsPage(String[] userIds, @Param("dateStart") Date dateStart,
+													 @Param("dateEnd") Date dateEnd,
+													 Integer pageNumber, Integer pageSize);
 
 	/**
 	 * 单行查询

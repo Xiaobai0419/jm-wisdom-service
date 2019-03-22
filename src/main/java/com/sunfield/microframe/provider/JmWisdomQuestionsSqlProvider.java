@@ -1,9 +1,12 @@
 package com.sunfield.microframe.provider;
 
+import com.sunfield.microframe.common.utils.SqlUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 
 import com.sunfield.microframe.domain.JmWisdomQuestions;
+
+import java.util.Date;
 
 /**
  * jm_wisdom_questions sql provider
@@ -52,7 +55,31 @@ public class JmWisdomQuestionsSqlProvider{
 			}
 		}.toString();
 	}
-	
+
+	public String generateFindByUserIdsSql(String[] userIds, Date dateStart, Date dateEnd){
+		return new SQL(){
+			{
+				SELECT(COLUMNS);
+				FROM("jm_wisdom_questions");
+
+				WHERE("status = '0'");
+
+				if(userIds != null && userIds.length > 0) {
+					String inSql = SqlUtils.inSql("user_id", SqlUtils.ColumnType.VARCHAR,userIds);
+					WHERE(inSql);
+				}
+
+				if(dateStart != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(dateEnd != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+			}
+		}.toString();
+	}
+
 	public String generateFindPageSql(JmWisdomQuestions obj){
 		StringBuilder sql = new StringBuilder(generateFindListSql(obj));
 		sql.append(" LIMIT ");
@@ -61,7 +88,17 @@ public class JmWisdomQuestionsSqlProvider{
 		sql.append(obj.getPageSize());
 		return sql.toString();
 	}
- 
+
+	public String generateFindByUserIdsPageSql(String[] userIds, Date dateStart, Date dateEnd,
+											   Integer pageNumber, Integer pageSize){
+		StringBuilder sql = new StringBuilder(generateFindByUserIdsSql(userIds,dateStart, dateEnd));
+		sql.append(" LIMIT ");
+		sql.append((pageNumber - 1) * pageSize);
+		sql.append(", ");
+		sql.append(pageSize);
+		return sql.toString();
+	}
+
  	public String generateFindOneSql(String id){
 		return new SQL(){
 			{

@@ -1,14 +1,18 @@
 package com.sunfield.microframe.rest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParams;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +29,7 @@ import com.sunfield.microframe.service.JmWisdomQuestionsService;
  * @author sunfield coder
  * 所有业务代码写在Service层，Controller层只保留对业务的调用
  */
+@Slf4j
 @Api(tags = "jm-wisdom-questions")
 @RestController
 @RequestMapping(value = "/JmWisdomQuestions")
@@ -44,7 +49,7 @@ public class JmWisdomQuestionsRest {
 			return new ResponseBean<List<JmWisdomQuestions>>(ResponseStatus.NO_DATA);
 		}
     }
-	
+
 	@ApiOperation(value="分页查询：前台：按行业显示，industryId字段传行业id，visitUserId（未登录访问可不传），传递分页信息，其他不传" +
 			"后台：全行业分页列表显示，传递分页信息，其他不传；")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
@@ -52,7 +57,23 @@ public class JmWisdomQuestionsRest {
     public ResponseBean<Page<JmWisdomQuestions>> findPage(@RequestBody JmWisdomQuestions obj) {
 		return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS, service.findPage(obj));
     }
-	
+
+	@ApiOperation(value="分页查询：后台：全行业分页列表搜索显示，传递搜索关键字、分页信息，其他不传")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "userIds", value = "", required = false, dataType = "String", allowMultiple = true),
+			@ApiImplicitParam(name = "dateStart", value = "", required = false, dataType = "Date"),
+			@ApiImplicitParam(name = "dateEnd", value = "", required = false, dataType = "Date"),
+			@ApiImplicitParam(name = "pageNumber", value = "", required = true, dataType = "int"),
+			@ApiImplicitParam(name = "pageSize", value = "", required = true, dataType = "int")
+	})
+	@RequestMapping(value = "/findSearchedPage", method = RequestMethod.POST)
+	public ResponseBean<Page<JmWisdomQuestions>> findPage(String[] userIds,Date dateStart,Date dateEnd,
+														  int pageNumber, int pageSize) {
+		return new ResponseBean<Page<JmWisdomQuestions>>(ResponseStatus.SUCCESS,service
+				.findByUserIdsPage(userIds, dateStart, dateEnd,
+						pageNumber, pageSize));
+	}
+
 	@ApiOperation(value="根据主键查询：传递id，visitUserId（未登录访问可不传）,其他不传")
 	@ApiImplicitParam(name = "obj", value = "", required = true, dataType = "JmWisdomQuestions")
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)

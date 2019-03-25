@@ -161,9 +161,7 @@ public class JmWisdomQuestionsSqlProvider{
 				VALUES("update_date", "#{updateDate}");
 				VALUES("remarks", "#{remarks}");
 				//后台，添加精品排序
-				if(obj.getSelectOrder() != null) {
-					VALUES("select_order", "#{selectOrder}");
-				}
+				VALUES("select_order", "#{selectOrder}");
 			}
 		}.toString();
 	}

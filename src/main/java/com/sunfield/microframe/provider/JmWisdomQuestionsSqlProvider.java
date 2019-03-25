@@ -188,9 +188,7 @@ public class JmWisdomQuestionsSqlProvider{
 				SET("remarks = #{remarks}");
 
 				//设置精品排序，独立操作，后台管理功能
-				if(obj.getSelectOrder() != null && obj.getSelectOrder() > 0) {
-					SET("select_order = #{selectOrder}");
-				}
+				SET("select_order = #{selectOrder}");
 
 				WHERE("id = #{id}");
 			}

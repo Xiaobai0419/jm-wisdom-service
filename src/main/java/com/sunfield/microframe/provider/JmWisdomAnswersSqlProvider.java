@@ -1,5 +1,6 @@
 package com.sunfield.microframe.provider;
 
+import com.sunfield.microframe.common.utils.SqlUtils;
 import com.sunfield.microframe.domain.JmWisdomQuestions;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
@@ -35,11 +36,26 @@ public class JmWisdomAnswersSqlProvider{
 				
 				WHERE("status = '0'");
 
+				if(obj.getUserIdList() != null && obj.getUserIdList().size() > 0) {
+					String inSql = SqlUtils.inSql("user_id", SqlUtils.ColumnType.VARCHAR,
+							obj.getUserIdList().toArray(new String[obj.getUserIdList().size()]));
+					WHERE(inSql);
+				}
+
+				if(obj.getDateStart() != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(obj.getDateEnd() != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+
 				//前台功能：传角马问题ID,问题对应回答列表,按日期+点赞数倒序排序
 				if(StringUtils.isNotBlank(obj.getQuestionId())) {
 					WHERE("question_id = #{questionId}");
-					ORDER_BY("date(create_date) desc,ayes desc,create_date desc");
 				}
+
+				ORDER_BY("date(update_date) desc,ayes desc,update_date desc");
 			}
 		}.toString();
 	}

@@ -33,7 +33,19 @@ public class JmWisdomWebcastSqlProvider{
 
 				//业务特殊需求：查询所有启用、禁用直播，禁用标识为2，1为删除标识
 				WHERE("status != '1'");
-				
+
+				if(obj.getDateStart() != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(obj.getDateEnd() != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+
+				if(StringUtils.isNotBlank(obj.getTitle())) {
+					WHERE("title like CONCAT('%',#{title},'%')");
+				}
+
 				//仅用于后台直播管理，启用/禁用第一排序，直播开始时间倒序第二排序，创建/更新时间倒序第三排序
 				ORDER_BY("status,begin_time desc,update_date desc");
 			}

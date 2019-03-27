@@ -1,5 +1,6 @@
 package com.sunfield.microframe.provider;
 
+import com.sunfield.microframe.common.utils.SqlUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 
@@ -34,6 +35,24 @@ public class JmWisdomVideosSqlProvider{
 				FROM("jm_wisdom_videos");
 				
 				WHERE("status = '0'");
+
+				if(obj.getInterviewIdList() != null && obj.getInterviewIdList().size() > 0) {
+					String inSql = SqlUtils.inSql("interview_id", SqlUtils.ColumnType.VARCHAR,
+							obj.getInterviewIdList().toArray(new String[obj.getInterviewIdList().size()]));
+					WHERE(inSql);
+				}
+
+				if(obj.getDateStart() != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(obj.getDateEnd() != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+
+				if(StringUtils.isNotBlank(obj.getTitle())) {
+					WHERE("title like CONCAT('%',#{title},'%')");
+				}
 
 				//查询某访谈关联视频列表，时间倒序，必须传递关联访谈ID，非空判断只是为了代码安全
 				if(StringUtils.isNotBlank(obj.getInterviewId())){

@@ -1,6 +1,7 @@
 package com.sunfield.microframe.provider;
 
 import com.sunfield.microframe.common.utils.SqlUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 
 import com.sunfield.microframe.domain.JmWisdomInterviews;
@@ -36,6 +37,18 @@ public class JmWisdomInterviewsSqlProvider{
 				
 				WHERE("status = '0'");
 
+				if(obj.getDateStart() != null) {
+					WHERE("update_date >= #{dateStart}");
+				}
+
+				if(obj.getDateEnd() != null) {
+					WHERE("update_date <= #{dateEnd}");
+				}
+
+				if(StringUtils.isNotBlank(obj.getTitle())) {
+					WHERE("title like CONCAT('%',#{title},'%')");
+				}
+
 				//按推荐排序列表，独立操作
 				if(obj.getSelectOrder() != null && obj.getSelectOrder() == 1){
 					WHERE("select_order is not null");
@@ -46,11 +59,12 @@ public class JmWisdomInterviewsSqlProvider{
 					WHERE("video_select_order is not null");
 					ORDER_BY("video_select_order");
 				}
-				//按时间倒序，独立操作
-				else {
-					ORDER_BY("update_date desc");
+				else if(obj.getVideoSelectOrder() != null && obj.getVideoSelectOrder() == 2){
+					WHERE("video_select_order is null");
 				}
-				
+				//按时间倒序
+				ORDER_BY("update_date desc");
+
 			}
 		}.toString();
 	}

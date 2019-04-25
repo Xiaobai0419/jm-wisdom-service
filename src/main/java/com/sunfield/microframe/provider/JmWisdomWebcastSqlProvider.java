@@ -18,7 +18,7 @@ public class JmWisdomWebcastSqlProvider{
  									" webcast_link AS webcastLink,"+
  									" begin_time AS beginTime,"+
  									" end_time AS endTime,"+
- 									" status AS status,"+
+ 									" status AS status1,"+
  									" create_by AS createBy,"+
  									" create_date AS createDate,"+
  									" update_by AS updateBy,"+

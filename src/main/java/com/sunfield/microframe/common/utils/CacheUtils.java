@@ -7,6 +7,7 @@ import com.sunfield.microframe.feign.JmIndustriesFeignService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,7 @@ public class CacheUtils {//缓存操作Bean,谁需要谁注入
                 @Override
                 public void run() {
                     try {
+                        //应用层缓存堆内存和这里的List堆内存是一块空间，不会浪费双份，元素只是引用复制
                         List<JmAppUser> users = findUsers();//远程调用有超时、熔断设置，且这里是另起一个线程异步，不用担心因容器初始化Bean未完成导致的服务长期起不来
                         List<JmIndustries> industries = findIndustries();
                         if(users != null && users.size() > 0) {
@@ -76,7 +78,8 @@ public class CacheUtils {//缓存操作Bean,谁需要谁注入
                         e.printStackTrace();
                     }
                 }
-            },2000,20000, TimeUnit.MILLISECONDS);
+                //频繁查库导致user服务日志过大，这里暂时加大查询间隔
+            },2000,600000, TimeUnit.MILLISECONDS);
         }else {
             Executors.newSingleThreadScheduledExecutor().scheduleWithFixedDelay(new Runnable() {
                 @Override
@@ -101,7 +104,7 @@ public class CacheUtils {//缓存操作Bean,谁需要谁注入
                         e.printStackTrace();
                     }
                 }
-            },2000,20000, TimeUnit.MILLISECONDS);
+            },2000,600000, TimeUnit.MILLISECONDS);
         }
     }
 
@@ -113,14 +116,14 @@ public class CacheUtils {//缓存操作Bean,谁需要谁注入
     @Qualifier("jmIndustriesFeignService")
     private JmIndustriesFeignService jmIndustriesFeignService;
 
-    //缓存所有用户--改为定时任务查询最新存入应用层缓存，这里要最新数据，不能缓存
-//	@Cacheable(value = "jm_wisdom_user_cache",key = "'jm_wisdom_user_cache'")
+    //缓存所有用户--改为定时任务查询最新存入应用层缓存，这里要最新数据，不能缓存--这个远程调用数据流，缓存不起作用
+	@Cacheable(value = "jm_wisdom_user_cache",key = "'jm_wisdom_user_cache'")
     public List<JmAppUser> findUsers() {
         return jmAppUserFeignService.findList().getData();
     }
 
     //缓存所有行业--改为定时任务查询最新存入应用层缓存，这里要最新数据，不能缓存
-//	@Cacheable(value = "jm_wisdom_industry_cache",key = "'jm_wisdom_industry_cache'")
+	@Cacheable(value = "jm_wisdom_industry_cache",key = "'jm_wisdom_industry_cache'")
     public List<JmIndustries> findIndustries() {
         return jmIndustriesFeignService.findList(new JmIndustries()).getData();
     }

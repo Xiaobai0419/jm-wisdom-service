@@ -12,9 +12,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableCaching
@@ -27,6 +29,10 @@ public class RedisConfig extends CachingConfigurerSupport {
     public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         cacheManager.setDefaultExpiration(defaultExpire);
+        Map<String, Long> expires = new HashMap<>();
+        expires.put("jm_wisdom_user_cache",600L);
+        expires.put("jm_wisdom_industry_cache",600L);
+        cacheManager.setExpires(expires);
         return cacheManager;
     }
 

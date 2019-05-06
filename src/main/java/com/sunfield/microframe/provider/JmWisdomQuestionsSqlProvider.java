@@ -171,15 +171,15 @@ public class JmWisdomQuestionsSqlProvider{
 			{
 				UPDATE("jm_wisdom_questions");
 				//赞+1，独立操作，赞时更新
-				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("ayes = ayes + 1");
 				}
 				//踩+1，独立操作，踩时更新
-				if(obj.getAntis() != null && obj.getAntis() == 1) {
+				if(obj.getAntisTag() != null && obj.getAntisTag() == 1) {
 					SET("antis = antis + 1");
 				}
-				//回答数+1，独立操作，添加回答时更新
-				if(obj.getAnswers() != null && obj.getAnswers() == 1) {
+				//回答数+1，独立操作，添加回答时更新--修复bug:避免回答数为1的问题也被加上一个回答数
+				if(obj.getAnswerTag() != null && obj.getAnswerTag() == 1) {
 					SET("answers = answers + 1");
 				}
 
@@ -187,8 +187,11 @@ public class JmWisdomQuestionsSqlProvider{
 				SET("update_date = #{updateDate}");
 				SET("remarks = #{remarks}");
 
-				//设置精品排序，独立操作，后台管理功能
-				SET("select_order = #{selectOrder}");
+				//修复BUG:后台精品排序设置被前台新增回答增加回答数覆盖排序号（变为空）的情况
+				if(obj.getSelectOrder() != null) {
+					//设置精品排序，独立操作，后台管理功能
+					SET("select_order = #{selectOrder}");
+				}
 
 				WHERE("id = #{id}");
 			}
@@ -201,15 +204,15 @@ public class JmWisdomQuestionsSqlProvider{
 			{
 				UPDATE("jm_wisdom_questions");
 				//赞-1
-				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("ayes = ayes - 1");
 				}
 				//踩-1
-				if(obj.getAntis() != null && obj.getAntis() == 1) {
+				if(obj.getAntisTag() != null && obj.getAntisTag() == 1) {
 					SET("antis = antis - 1");
 				}
 				//回答数-1，用于后台删除回答
-				if(obj.getAnswers() != null && obj.getAnswers() == 1) {
+				if(obj.getAnswerTag() != null && obj.getAnswerTag() == 1) {
 					SET("answers = answers - 1");
 				}
 

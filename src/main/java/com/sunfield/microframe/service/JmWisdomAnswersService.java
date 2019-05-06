@@ -157,7 +157,7 @@ public class JmWisdomAnswersService implements ITxTransaction{
 			JmWisdomQuestions jmWisdomQuestions = new JmWisdomQuestions();
 			jmWisdomQuestions.preUpdate();//注意更新
 			jmWisdomQuestions.setId(obj.getQuestionId());
-			jmWisdomQuestions.setAnswers(1);//表示更新回答数
+			jmWisdomQuestions.setAnswerTag(1);//表示更新回答数
 			result2 = jmWisdomQuestionsMapper.update(jmWisdomQuestions);
 		}
 		if(result1 > 0 && result2 > 0) {

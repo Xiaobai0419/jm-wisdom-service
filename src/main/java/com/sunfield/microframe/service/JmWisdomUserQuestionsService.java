@@ -76,11 +76,11 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomQuestions.preUpdate();
 					switch(yesorno) {
 						case 1://赞/收藏
-							jmWisdomQuestions.setAyes(1);//代表赞数+1
+							jmWisdomQuestions.setAyesTag(1);//代表赞数+1
 							result2 = jmWisdomQuestionsMapper.update(jmWisdomQuestions);
 							break;
 						case 2://踩
-							jmWisdomQuestions.setAntis(1);//代表踩数+1
+							jmWisdomQuestions.setAntisTag(1);//代表踩数+1
 							result2 = jmWisdomQuestionsMapper.update(jmWisdomQuestions);
 							break;
 						default:
@@ -93,11 +93,11 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomAnswers.preUpdate();
 					switch(yesorno) {
 						case 1://赞/收藏
-							jmWisdomAnswers.setAyes(1);//代表赞数+1
+							jmWisdomAnswers.setAyesTag(1);//代表赞数+1
 							result2 = jmWisdomAnswersMapper.update(jmWisdomAnswers);
 							break;
 						case 2://踩
-							jmWisdomAnswers.setAntis(1);//代表踩数+1
+							jmWisdomAnswers.setAntisTag(1);//代表踩数+1
 							result2 = jmWisdomAnswersMapper.update(jmWisdomAnswers);
 							break;
 						default:
@@ -110,7 +110,7 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomInterviews.preUpdate();
 					//收藏访谈
 					if(yesorno == 1) {
-						jmWisdomInterviews.setFavorites(1);
+						jmWisdomInterviews.setFavoriteTag(1);
 						result2 = jmWisdomInterviewsMapper.update(jmWisdomInterviews);
 					}
 					break;
@@ -120,7 +120,7 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomVideos.preUpdate();
 					//赞视频
 					if(yesorno == 1) {
-						jmWisdomVideos.setAyes(1);
+						jmWisdomVideos.setAyesTag(1);
 						result2 = jmWisdomVideosMapper.update(jmWisdomVideos);
 					}
 					break;
@@ -168,11 +168,11 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomQuestions.preUpdate();
 					switch(yesorno) {
 						case 1://赞/收藏
-							jmWisdomQuestions.setAyes(1);//代表赞数-1
+							jmWisdomQuestions.setAyesTag(1);//代表赞数-1
 							result2 = jmWisdomQuestionsMapper.updateCancel(jmWisdomQuestions);
 							break;
 						case 2://踩
-							jmWisdomQuestions.setAntis(1);//代表踩数-1
+							jmWisdomQuestions.setAntisTag(1);//代表踩数-1
 							result2 = jmWisdomQuestionsMapper.updateCancel(jmWisdomQuestions);
 							break;
 						default:
@@ -185,11 +185,11 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomAnswers.preUpdate();
 					switch(yesorno) {
 						case 1://赞/收藏
-							jmWisdomAnswers.setAyes(1);//代表赞数-1
+							jmWisdomAnswers.setAyesTag(1);//代表赞数-1
 							result2 = jmWisdomAnswersMapper.updateCancel(jmWisdomAnswers);
 							break;
 						case 2://踩
-							jmWisdomAnswers.setAntis(1);//代表踩数-1
+							jmWisdomAnswers.setAntisTag(1);//代表踩数-1
 							result2 = jmWisdomAnswersMapper.updateCancel(jmWisdomAnswers);
 							break;
 						default:
@@ -202,7 +202,7 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomInterviews.preUpdate();
 					//取消收藏访谈
 					if(yesorno == 1) {
-						jmWisdomInterviews.setFavorites(1);
+						jmWisdomInterviews.setFavoriteTag(1);
 						result2 = jmWisdomInterviewsMapper.updateCancel(jmWisdomInterviews);
 					}
 					break;
@@ -212,7 +212,7 @@ public class JmWisdomUserQuestionsService implements ITxTransaction{
 					jmWisdomVideos.preUpdate();
 					//取消赞视频
 					if(yesorno == 1) {
-						jmWisdomVideos.setAyes(1);
+						jmWisdomVideos.setAyesTag(1);
 						result2 = jmWisdomVideosMapper.updateCancel(jmWisdomVideos);
 					}
 					break;

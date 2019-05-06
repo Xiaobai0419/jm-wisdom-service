@@ -19,6 +19,7 @@ public class JmWisdomVideosSqlProvider{
  									" cover_url AS coverUrl,"+
  									" video_url AS videoUrl,"+
  									" allow_comments AS allowComments,"+
+									" ayes AS ayes,"+
  									" leaguer_only AS leaguerOnly,"+
  									" free_duration AS freeDuration,"+
  									" status AS status,"+
@@ -116,7 +117,7 @@ public class JmWisdomVideosSqlProvider{
 				UPDATE("jm_wisdom_videos");
 
 				//前台功能，视频允许评论点赞情形下（前台用户可看到点赞按钮并点赞，说明一定是配置了可评论点赞，记录赞数是一定没错的），赞数+1，独立操作，用户点赞该视频时更新
-				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("ayes = ayes + 1");
 				}else {//后台功能，不能更改视频的访谈id,视频仍对应原访谈，只更改其他信息
 					SET("title = #{title}");
@@ -146,7 +147,7 @@ public class JmWisdomVideosSqlProvider{
 			{
 				UPDATE("jm_wisdom_videos");
 
-				if(obj.getAyes() != null && obj.getAyes() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("ayes = ayes - 1");
 				}
 				SET("update_by = #{updateBy}");

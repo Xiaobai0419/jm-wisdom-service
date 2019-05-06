@@ -134,7 +134,7 @@ public class JmWisdomInterviewsSqlProvider{
 				UPDATE("jm_wisdom_interviews");
 				
 				//前台功能，收藏人数+1，独立操作，用户收藏该访谈时更新
-				if(obj.getFavorites() != null && obj.getFavorites() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getFavoriteTag() != null && obj.getFavoriteTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("favorites = favorites + 1");
 				}else {
 					//后台管理功能，支持编辑时设置两种排序号，传空或不传代表不参与排序
@@ -160,7 +160,7 @@ public class JmWisdomInterviewsSqlProvider{
 			{
 				UPDATE("jm_wisdom_interviews");
 
-				if(obj.getFavorites() != null && obj.getFavorites() == 1) {//缺少非空判断时，不传该字段会报错
+				if(obj.getFavoriteTag() != null && obj.getFavoriteTag() == 1) {//缺少非空判断时，不传该字段会报错
 					SET("favorites = favorites - 1");
 				}
 

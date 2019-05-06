@@ -126,11 +126,11 @@ public class JmWisdomAnswersSqlProvider{
 			{
 				UPDATE("jm_wisdom_answers");
 				//前台功能，点赞回答
-				if(obj.getAyes() != null && obj.getAyes() == 1) {
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {
 					SET("ayes = ayes + 1");
 				}
 				//前台功能，踩回答
-				if(obj.getAntis() != null && obj.getAntis() == 1) {
+				if(obj.getAntisTag() != null && obj.getAntisTag() == 1) {
 					SET("antis = antis + 1");
 				}
 
@@ -148,10 +148,10 @@ public class JmWisdomAnswersSqlProvider{
 		return new SQL(){
 			{
 				UPDATE("jm_wisdom_answers");
-				if(obj.getAyes() != null && obj.getAyes() == 1) {
+				if(obj.getAyesTag() != null && obj.getAyesTag() == 1) {
 					SET("ayes = ayes - 1");
 				}
-				if(obj.getAntis() != null && obj.getAntis() == 1) {
+				if(obj.getAntisTag() != null && obj.getAntisTag() == 1) {
 					SET("antis = antis - 1");
 				}
 

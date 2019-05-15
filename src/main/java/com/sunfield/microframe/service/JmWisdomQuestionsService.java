@@ -57,7 +57,32 @@ public class JmWisdomQuestionsService implements ITxTransaction{
 
 	public List<JmWisdomQuestions> findList(JmWisdomQuestions obj){
 		//目前前台精品排序不需要用户相关信息，只有详情页需要，需要时添加用户信息获取代码即可
-		return mapper.findList(obj);
+		List<JmWisdomQuestions> list = mapper.findList(obj);
+		if(list != null && list.size() > 0) {
+			JmWisdomUserQuestions jmWisdomUserQuestions = new JmWisdomUserQuestions();
+			for(JmWisdomQuestions jmWisdomQuestions : list) {
+				JmAppUser user = null;
+				if(StringUtils.isNotBlank(jmWisdomQuestions.getUserId())) {
+					user = cacheUtils.getUserCache().get(jmWisdomQuestions.getUserId());//Map传入空key会报空指针
+					//如果缓存没有，降级去远程调用，这个调用不能缓存，必定要获取最新
+					if(user == null) {
+						user = findUser(jmWisdomQuestions.getUserId());
+					}
+				}
+				jmWisdomQuestions.setUser(user);
+				JmIndustries industries = null;
+				if(StringUtils.isNotBlank(jmWisdomQuestions.getIndustryId())) {
+					industries = cacheUtils.getIndustriesCache().get(jmWisdomQuestions.getIndustryId());
+					if(industries == null) {
+						JmIndustries industriesInput =new JmIndustries();
+						industriesInput.setId(jmWisdomQuestions.getIndustryId());
+						industries = findIndustry(industriesInput);
+					}
+				}
+				jmWisdomQuestions.setIndustry(industries);
+			}
+		}
+		return list;
 	}
 
 	public Page<JmWisdomQuestions> findPage(JmWisdomQuestions obj){

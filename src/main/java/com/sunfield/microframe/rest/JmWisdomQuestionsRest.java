@@ -98,9 +98,13 @@ public class JmWisdomQuestionsRest {
     public ResponseBean<JmWisdomQuestions> insert(@RequestBody JmWisdomQuestions obj) {
 		JmWisdomQuestions object = service.insert(obj);
 		if(object != null) {
-			return new ResponseBean<JmWisdomQuestions>(ResponseStatus.SUCCESS, object);
+			ResponseBean<JmWisdomQuestions> responseBean = new ResponseBean<JmWisdomQuestions>(ResponseStatus.SUCCESS, object);
+			responseBean.setMsg("发布成功");
+			return responseBean;
 		} else {
-			return new ResponseBean<JmWisdomQuestions>(ResponseStatus.FAIL);
+			ResponseBean<JmWisdomQuestions> responseBean = new ResponseBean<JmWisdomQuestions>(ResponseStatus.FAIL);
+			responseBean.setMsg("发布失败");
+			return responseBean;
 		}
     }
 	
